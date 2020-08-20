@@ -21,7 +21,7 @@ namespace AvaloniaControls
     /// can click a rating from 0 to n stars resulting in <see cref="Value"/> being
     /// set to a value between 0 and 1.
     /// </summary>
-    public class RatingControl : TemplatedControl, ITemplatedControl
+    public class RatingControl : ContentControl, ITemplatedControl
     {
         public static readonly StyledProperty<int> NumberOfStarsProperty =
             AvaloniaProperty.Register<RatingControl, int>(nameof(NumberOfStars), 6, validate: ValidateNumberOfStars);

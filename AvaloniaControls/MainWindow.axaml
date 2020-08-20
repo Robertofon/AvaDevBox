@@ -21,7 +21,9 @@
         <TextBlock>Hier das Control:</TextBlock>
         <local:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
                              Value="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"
-                             Background="DarkKhaki"/>
+                             Background="DarkKhaki">
+          <Button>Testcontent</Button>
+        </local:RatingControl>
         <TextBox Text="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"/>
         <local:Star Width="100" Height="100" Fill="Yellow"  NumberOfSpikes="9"/>
       </StackPanel>

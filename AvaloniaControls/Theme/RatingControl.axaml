@@ -2,12 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ac="clr-namespace:AvaloniaControls;assembly=AvaloniaControls"
         xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <ac:RatingControl NumberOfStars="6" Value="0.3" Background="DarkMagenta" Content="abc" VerticalContentAlignment="Center"/>
+    </Border>
+  </Design.PreviewWith>
   <Style Selector="ac|RatingControl">
-    <Design.PreviewWith>
-      <Border Padding="20">
-        <ac:RatingControl NumberOfStars="5" Value="0.3"/>
-      </Border>
-    </Design.PreviewWith>
     <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
@@ -17,7 +17,9 @@
       <ControlTemplate>
         <Border Background="{TemplateBinding Background}" BorderBrush="Beige" BorderThickness="1">
           <Grid ColumnDefinitions="Auto,Auto">
-            <TextBlock Grid.Column="0"  >Rating:</TextBlock>
+            <ContentPresenter Grid.Column="0" Content="{TemplateBinding Content}" 
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             <ItemsPresenter Grid.Column="1" Items="{TemplateBinding StarItems}" Name="PART_StarsPresenter" >
               <ItemsPresenter.ItemsPanel>
                 <ItemsPanelTemplate>
