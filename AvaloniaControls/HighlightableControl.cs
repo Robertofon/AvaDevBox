@@ -4,6 +4,7 @@ using System.Text;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Data;
 using Avalonia.Media;
 
 namespace AvaloniaControls
@@ -11,7 +12,7 @@ namespace AvaloniaControls
     /// <summary>
     /// Control that is selectable and thus changes color.
     /// </summary>
-    public class HighlightableControl : Button, ISelectable
+    public class HighlightableControl : TemplatedControl, ISelectable
     {
         /// <summary>
         /// Defines the <see cref="IsSelected"/> property.
@@ -47,17 +48,6 @@ namespace AvaloniaControls
         {
             get { return GetValue(HighlightBrushProperty); }
             set { SetValue(HighlightBrushProperty, value); }
-        }
-
-        protected override void OnClick()
-        {
-            Toggle();
-            base.OnClick();
-        }
-
-        protected virtual void Toggle()
-        {
-            IsSelected = !IsSelected;
         }
 
     }

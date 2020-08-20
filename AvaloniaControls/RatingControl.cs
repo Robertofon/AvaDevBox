@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Disposables;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Avalonia;
 using Avalonia.Controls;
@@ -10,6 +12,7 @@ using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Styling;
+using JetBrains.Annotations;
 
 namespace AvaloniaControls
 {
@@ -29,10 +32,11 @@ namespace AvaloniaControls
         /// <summary>
         /// Defines the <see cref="StarItems"/> property.
         /// </summary>
-        public static readonly DirectProperty<RatingControl, IEnumerable> StarItemsProperty =
-            AvaloniaProperty.RegisterDirect<RatingControl, IEnumerable>(nameof(StarItems), o => o.StarItems);//, (o, v) => o.StarItems = v);
+        public static readonly DirectProperty<RatingControl, IEnumerable<StarItem>> StarItemsProperty =
+            AvaloniaProperty.RegisterDirect<RatingControl, IEnumerable<StarItem>>(nameof(StarItems), o => o.StarItems);//, (o, v) => o.StarItems = v);
 
-        private  IEnumerable _starItems;
+        private IEnumerable<StarItem> _starItems;
+        private ItemsPresenter _starsPresenter;
 
         static RatingControl()
         {
@@ -41,7 +45,6 @@ namespace AvaloniaControls
             ValueProperty.Changed.Subscribe(OnValueChanged);
             AffectsRender<RatingControl>(NumberOfStarsProperty, ValueProperty);
             AffectsMeasure<RatingControl>(NumberOfStarsProperty);
-            //TemplateProperty.OverrideDefaultValue(typeof());
         }
 
         private static int ValidateNumberOfStars(RatingControl arg1, int val)
@@ -73,7 +76,7 @@ namespace AvaloniaControls
             set { SetValue(ValueProperty, value); }
         }
 
-        public IEnumerable StarItems
+        public IEnumerable<StarItem> StarItems
         {
             get { return _starItems; }
             private set { SetAndRaise(StarItemsProperty, ref _starItems, value); }
@@ -107,28 +110,56 @@ namespace AvaloniaControls
 
         private static void UpdateStars(RatingControl rating, int newNumber, double newValue)
         {
-            //new ListBoxItem().
-            rating.StarItems = Enumerable.Range(0, newNumber ).Select(a => new StarItem() {IsSelected = a < newValue * newNumber}).ToList();
-            //Enumerable.Repeat("S", newValue);
+            // new items with events
+            List<StarItem> ratingStarItems = Enumerable.Range(0, newNumber).Select(a => new StarItem(a) { IsSelected = a < newValue * newNumber }).ToList();
+
+            // replace
+            rating.StarItems = ratingStarItems;
         }
 
         protected override void OnTemplateApplied(TemplateAppliedEventArgs e)
         {
+            base.OnTemplateApplied(e);
+            _starsPresenter = e.NameScope.Get<ItemsPresenter>("PART_StarsPresenter");
+            _starsPresenter.Tapped += _starsPresenter_Tapped;
+        }
 
-
+        private void _starsPresenter_Tapped(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (e.Source is IStyledElement star)
+            {
+                if (star.DataContext is StarItem staritem)
+                {
+                    double newRatingValue = (staritem.N + 1d) / this.NumberOfStars;
+                    // how to get to 0 rating: Click the same.
+                    if (this.Value == newRatingValue)
+                    {
+                        this.Value = 0;
+                    }
+                    else
+                    {
+                        this.Value = newRatingValue;
+                    }
+                }
+            }
         }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-//            OnNumberOfStarsChanged(new AvaloniaPropertyChangedEventArgs(this, NumberOfStarsProperty, 0, NumberOfStars, BindingPriority.Unset));
             UpdateStars(this, NumberOfStars, Value);
-            //RaisePropertyChanged(StarItemsProperty,  );
         }
-    }
 
-    public class StarItem : ISelectable
-    {
-        public bool IsSelected { get; set; }
+        public class StarItem : ISelectable
+        {
+            public StarItem(int n)
+            {
+                this.N = n;
+            }
+
+            public int N { get; }
+
+            public bool IsSelected { get; set; }
+        }
     }
 }

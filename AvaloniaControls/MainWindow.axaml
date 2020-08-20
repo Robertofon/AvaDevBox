@@ -8,12 +8,6 @@
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
-     <TabItem Header="Highlight">
-      <StackPanel>
-        <local:HighlightableControl Width="53" Height="53" IsSelected="True" />
-        <local:HighlightableControl Width="53" Height="53" IsSelected="False" />
-      </StackPanel>
-    </TabItem>
     <TabItem Header="RatingControl">
       <StackPanel>
         <TextBlock>Anzahl Sterne:</TextBlock>
@@ -33,6 +27,18 @@
       </StackPanel>
     </TabItem>
 
+     <TabItem Header="Highlight">
+      <StackPanel>
+        <WrapPanel>
+          <CheckBox Name="star1" IsChecked="True" Content="Star akt" IsThreeState="False"/>
+          <local:HighlightableControl Width="53" Height="53" IsSelected="{Binding #star1.IsChecked}" />
+        </WrapPanel>
+        <WrapPanel>
+          <CheckBox Name="star2" IsChecked="False" Content="Star deakt" IsThreeState="False"/>
+          <local:HighlightableControl Width="53" Height="53" IsSelected="{Binding #star2.IsChecked}" />
+        </WrapPanel>
+      </StackPanel>
+    </TabItem>
 
     <TabItem Header="Star">
       <StackPanel>

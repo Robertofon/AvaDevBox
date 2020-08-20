@@ -18,7 +18,7 @@
         <Border Background="{TemplateBinding Background}" BorderBrush="Beige" BorderThickness="1">
           <Grid ColumnDefinitions="Auto,Auto">
             <TextBlock Grid.Column="0"  >Rating:</TextBlock>
-            <ItemsPresenter Grid.Column="1" Items="{TemplateBinding StarItems}" >
+            <ItemsPresenter Grid.Column="1" Items="{TemplateBinding StarItems}" Name="PART_StarsPresenter" >
               <ItemsPresenter.ItemsPanel>
                 <ItemsPanelTemplate>
                   <StackPanel Orientation="Horizontal"/>
@@ -26,10 +26,7 @@
               </ItemsPresenter.ItemsPanel>
               <ItemsPresenter.ItemTemplate>
                 <DataTemplate>
-                  <StackPanel>
-                    <TextBlock Text="{Binding IsSelected}" />
-                    <ac:Star Width="32" Height="32" Stroke="{DynamicResource ThemeBorderMidBrush}" Fill="{DynamicResource ThemeAccentBrush}"/>
-                  </StackPanel>
+                  <ac:HighlightableControl Width="32" Height="32" IsSelected="{Binding IsSelected, Mode=TwoWay}"/>
                 </DataTemplate>
               </ItemsPresenter.ItemTemplate>
             </ItemsPresenter>
