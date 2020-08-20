@@ -67,6 +67,7 @@ namespace AvaloniaControls
 
             return new PolylineGeometry(cpoints, true);
         }
+
         protected override Size MeasureOverride(Size availableSize)
         {
             return new Size(StrokeThickness, StrokeThickness);

@@ -9,12 +9,12 @@
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
     <StackPanel Name="3">
-      <TextBlock>Hier das Control:</TextBlock>
-      <local:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"/>
-      <local:Star Width="100" Height="100" Fill="Yellow"  NumberOfSpikes="9"/>
       <Slider Minimum="0" Maximum="30" SmallChange="1" Width="300" Value="6"
               TickFrequency="1" IsSnapToTickEnabled="True"
               Name="StarSl"/>
+      <TextBlock>Hier das Control:</TextBlock>
+      <local:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"/>
+      <local:Star Width="100" Height="100" Fill="Yellow"  NumberOfSpikes="9"/>
     </StackPanel>
     <StackPanel>
       <Button>bla</Button>

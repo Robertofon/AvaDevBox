@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Text;
 using Avalonia;
 using Avalonia.Controls;
@@ -19,7 +20,7 @@ namespace AvaloniaControls
     public class RatingControl : TemplatedControl, ITemplatedControl
     {
         public static readonly StyledProperty<int> NumberOfStarsProperty =
-            AvaloniaProperty.Register<RatingControl, int>(nameof(NumberOfStars), 6, validate: ValidateNumberOfStars, notifying: NotifyNumberOfStars);
+            AvaloniaProperty.Register<RatingControl, int>(nameof(NumberOfStars), 6, validate: ValidateNumberOfStars);
 
         public static readonly StyledProperty<double> ValueProperty =
             AvaloniaProperty.Register<RatingControl, double>(nameof(NumberOfStars), 6, validate: ValidateValue);
@@ -35,18 +36,15 @@ namespace AvaloniaControls
         static RatingControl()
         {
             ContentPresenter.ContentTemplateProperty.AddOwner<RatingControl>();
-            //NumberOfStarsProperty.Changed.AddClassHandler(x => x.OnNumberOfStarsChanged);
+            NumberOfStarsProperty.Changed.Subscribe(OnNumberOfStarsChanged);
+            
+            //NumberOfStarsProperty.Changed..AddClassHandler<RatingControl>(x => x.OnNumberOfStarsChanged);
             //TemplateProperty.OverrideDefaultValue(typeof());
         }
 
         private static int ValidateNumberOfStars(RatingControl arg1, int val)
         {
             return val.LimitTo(1, 100);
-        }
-
-        private static void NotifyNumberOfStars(IAvaloniaObject arg1, bool arg2)
-        {
-            ((RatingControl)arg1).UpdateStars();
         }
 
         private static double ValidateValue(RatingControl arg1, double val)
@@ -79,15 +77,26 @@ namespace AvaloniaControls
             private set { SetAndRaise(StarItemsProperty, ref _starItems, value); }
         }
 
-        private void UpdateStars()
+        /// <summary>
+        /// ItemsProperty property changed handler.
+        /// </summary>
+        /// <param name="e">AvaloniaPropertyChangedEventArgs.</param>
+        private static void OnNumberOfStarsChanged(AvaloniaPropertyChangedEventArgs e)
         {
-            StarItems = Enumerable.Repeat("S", NumberOfStars);
+            if (e.Sender is RatingControl rating)
+            {
+                var oldValue = (int)e.OldValue;
+                var newValue = (int)e.NewValue;
+                rating.StarItems = Enumerable.Repeat("S", newValue);
+            }
         }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            this.UpdateStars();
+            
+            //OnNumberOfStarsChanged(this)
+//            this.UpdateStars();
             //RaisePropertyChanged(StarItemsProperty,  );
         }
     }
