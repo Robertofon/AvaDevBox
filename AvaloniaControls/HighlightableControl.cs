@@ -11,7 +11,7 @@ namespace AvaloniaControls
     /// <summary>
     /// Control that is selectable and thus changes color.
     /// </summary>
-    public class HighlightableControl : TemplatedControl, ISelectable
+    public class HighlightableControl : Button, ISelectable
     {
         /// <summary>
         /// Defines the <see cref="IsSelected"/> property.
@@ -48,5 +48,17 @@ namespace AvaloniaControls
             get { return GetValue(HighlightBrushProperty); }
             set { SetValue(HighlightBrushProperty, value); }
         }
+
+        protected override void OnClick()
+        {
+            Toggle();
+            base.OnClick();
+        }
+
+        protected virtual void Toggle()
+        {
+            IsSelected = !IsSelected;
+        }
+
     }
 }
