@@ -22,6 +22,7 @@
                               Margin="{TemplateBinding Padding}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            <!-- stars --> 
             <ItemsPresenter Grid.Column="1" Items="{TemplateBinding StarItems}" Name="PART_StarsPresenter" >
               <ItemsPresenter.ItemsPanel>
                 <ItemsPanelTemplate>

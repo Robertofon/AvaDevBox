@@ -25,7 +25,31 @@
           <Button>Testcontent</Button>
         </local:RatingControl>
         <TextBox Text="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"/>
-        <local:Star Width="100" Height="100" Fill="Yellow"  NumberOfSpikes="9"/>
+        <TextBlock>Styled version:</TextBlock>
+        <Panel>
+          <Panel.Styles>
+            <Style Selector="local|HighlightableControl">
+              <Setter Property="Template">
+                <ControlTemplate>
+                  <Ellipse Width="{TemplateBinding Width}"
+                           Height="{TemplateBinding Height}"
+                           Stroke="{TemplateBinding BorderBrush}"
+                           Margin="1"
+                           Fill="{TemplateBinding HighlightBrush}"
+                           StrokeThickness="0.5"
+                  />
+                </ControlTemplate>
+              </Setter>
+            </Style>
+
+          </Panel.Styles>
+          <local:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
+                               Value="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"
+                               Background="DarkKhaki">
+            Styled mit Ellipse
+          </local:RatingControl>
+        </Panel>
+
       </StackPanel>
     </TabItem>
 

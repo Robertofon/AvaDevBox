@@ -2,12 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ac="clr-namespace:AvaloniaControls;assembly=AvaloniaControls"
         xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    <Design.PreviewWith>
-      <Border Padding="20">
-        <ac:HighlightableControl Width="50" Height="50" IsSelected="True"/>
-      </Border>
-    </Design.PreviewWith>  
-    <Style Selector="ac|HighlightableControl">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <ac:HighlightableControl Width="50" Height="50" IsSelected="True"/>
+    </Border>
+  </Design.PreviewWith>
+  <Style Selector="ac|HighlightableControl">
 
     <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
@@ -19,8 +19,8 @@
 
     <Setter Property="Template">
       <ControlTemplate>
-        <ac:Star NumberOfSpikes="9"
-                 InnerRadiusRatio="0.4" 
+        <ac:Star NumberOfSpikes="5"
+                 InnerRadiusRatio="0.4"
                  Width="{TemplateBinding Width}"
                  Height="{TemplateBinding Height}"
                  Stroke="{TemplateBinding BorderBrush}"
