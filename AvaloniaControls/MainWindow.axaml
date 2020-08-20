@@ -3,14 +3,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AvaloniaControls;assembly=AvaloniaControls"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+        Width="400"
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
     <StackPanel Name="3">
       <TextBlock>Hier das Control:</TextBlock>
-      <local:RatingControl NumberOfStars="6"/>
+      <local:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"/>
       <local:Star Width="100" Height="100" Fill="Yellow"  NumberOfSpikes="9"/>
+      <Slider Minimum="0" Maximum="30" SmallChange="1" Width="300" Value="6"
+              TickFrequency="1" IsSnapToTickEnabled="True"
+              Name="StarSl"/>
     </StackPanel>
     <StackPanel>
       <Button>bla</Button>

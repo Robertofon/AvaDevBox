@@ -35,6 +35,7 @@ namespace AvaloniaControls
         static RatingControl()
         {
             ContentPresenter.ContentTemplateProperty.AddOwner<RatingControl>();
+            //NumberOfStarsProperty.Changed.AddClassHandler(x => x.OnNumberOfStarsChanged);
             //TemplateProperty.OverrideDefaultValue(typeof());
         }
 
@@ -45,7 +46,7 @@ namespace AvaloniaControls
 
         private static void NotifyNumberOfStars(IAvaloniaObject arg1, bool arg2)
         {
-
+            ((RatingControl)arg1).UpdateStars();
         }
 
         private static double ValidateValue(RatingControl arg1, double val)
@@ -75,15 +76,19 @@ namespace AvaloniaControls
         public IEnumerable StarItems
         {
             get { return _starItems; }
-//            set { SetAndRaise(StarItemsProperty, ref _starItems, value); }
+            private set { SetAndRaise(StarItemsProperty, ref _starItems, value); }
         }
 
+        private void UpdateStars()
+        {
+            StarItems = Enumerable.Repeat("S", NumberOfStars);
+        }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            _starItems = Enumerable.Repeat("S", NumberOfStars);
-            RaisePropertyChanged(StarItemsProperty, );
+            this.UpdateStars();
+            //RaisePropertyChanged(StarItemsProperty,  );
         }
     }
 }
