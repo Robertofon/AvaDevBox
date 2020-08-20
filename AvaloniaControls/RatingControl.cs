@@ -24,7 +24,7 @@ namespace AvaloniaControls
             AvaloniaProperty.Register<RatingControl, int>(nameof(NumberOfStars), 6, validate: ValidateNumberOfStars);
 
         public static readonly StyledProperty<double> ValueProperty =
-            AvaloniaProperty.Register<RatingControl, double>(nameof(NumberOfStars), 0, validate: ValidateValue);
+            AvaloniaProperty.Register<RatingControl, double>(nameof(Value), 0, validate: ValidateValue);
 
         /// <summary>
         /// Defines the <see cref="StarItems"/> property.
@@ -38,6 +38,7 @@ namespace AvaloniaControls
         {
             ContentPresenter.ContentTemplateProperty.AddOwner<RatingControl>();
             NumberOfStarsProperty.Changed.Subscribe(OnNumberOfStarsChanged);
+            ValueProperty.Changed.Subscribe(OnValueChanged);
             AffectsRender<RatingControl>(NumberOfStarsProperty, ValueProperty);
             AffectsMeasure<RatingControl>(NumberOfStarsProperty);
             //TemplateProperty.OverrideDefaultValue(typeof());
@@ -86,15 +87,29 @@ namespace AvaloniaControls
         {
             if (e.Sender is RatingControl rating)
             {
-                var newValue = (int)e.NewValue;
-                UpdateStars(rating, newValue);
+                var newNumber = (int)e.NewValue;
+                UpdateStars(rating, newNumber, rating.Value);
             }
         }
 
-        private static void UpdateStars(RatingControl rating, int newValue)
+        /// <summary>
+        /// ItemsProperty property changed handler.
+        /// </summary>
+        /// <param name="e">AvaloniaPropertyChangedEventArgs.</param>
+        private static void OnValueChanged(AvaloniaPropertyChangedEventArgs e)
+        {
+            if (e.Sender is RatingControl rating)
+            {
+                var newValue = (double)e.NewValue;
+                UpdateStars(rating, rating.NumberOfStars, newValue);
+            }
+        }
+
+        private static void UpdateStars(RatingControl rating, int newNumber, double newValue)
         {
             //new ListBoxItem().
-            rating.StarItems = Enumerable.Repeat("S", newValue);
+            rating.StarItems = Enumerable.Range(0, newNumber ).Select(a => new StarItem() {IsSelected = a < newValue * newNumber}).ToList();
+            //Enumerable.Repeat("S", newValue);
         }
 
         protected override void OnTemplateApplied(TemplateAppliedEventArgs e)
@@ -107,8 +122,13 @@ namespace AvaloniaControls
         {
             base.OnInitialized();
 //            OnNumberOfStarsChanged(new AvaloniaPropertyChangedEventArgs(this, NumberOfStarsProperty, 0, NumberOfStars, BindingPriority.Unset));
-            UpdateStars(this, NumberOfStars);
+            UpdateStars(this, NumberOfStars, Value);
             //RaisePropertyChanged(StarItemsProperty,  );
         }
+    }
+
+    public class StarItem : ISelectable
+    {
+        public bool IsSelected { get; set; }
     }
 }

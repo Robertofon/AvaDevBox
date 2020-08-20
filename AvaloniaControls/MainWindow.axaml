@@ -8,31 +8,43 @@
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
-    <StackPanel Name="3">
-      <TextBlock>Anzahl Sterne:</TextBlock>
-      <Slider Minimum="0" Maximum="30" SmallChange="1" Width="300" Value="6"
-              TickFrequency="1" IsSnapToTickEnabled="True"
-              Name="StarSl"/>
-      <TextBlock>Anzahl Sterne:</TextBlock>
-      <Slider Minimum="0" Maximum="1" SmallChange="0.01" Width="300" Value="0.5"
-              TickFrequency="0.1"
-              Name="StarsValSl"/>
-      <TextBlock>Hier das Control:</TextBlock>
-      <local:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
-                           Value="{Binding ElementName=StarValSl, Path=Value, Mode=TwoWay}"/>
-      <local:Star Width="100" Height="100" Fill="Yellow"  NumberOfSpikes="9"/>
-    </StackPanel>
-    
-    
-    <StackPanel>
-      <Button>bla</Button>
-      <local:Star Width="53" Height="53" Fill="Yellow" NumberOfSpikes="{Binding  ElementName=Sl, Path=Value, Mode=OneWay}"
-                  InnerRadiusRatio="0.4"
-                  Stroke="Black" StrokeThickness=".5"/>
-      <Slider Minimum="3" Maximum="30" SmallChange="1" Width="300" Value="6"
-              TickFrequency="1" IsSnapToTickEnabled="True"
-              Name="Sl"/>
-      <TextBox Text="{Binding ElementName=Sl, Path=Value, Mode=TwoWay}" Width="300" />
-    </StackPanel>
+     <TabItem Header="Highlight">
+      <StackPanel>
+        <local:HighlightableControl Width="53" Height="53" IsSelected="True" />
+        <local:HighlightableControl Width="53" Height="53" IsSelected="False" />
+      </StackPanel>
+    </TabItem>
+    <TabItem Header="RatingControl">
+      <StackPanel>
+        <TextBlock>Anzahl Sterne:</TextBlock>
+        <Slider Minimum="0" Maximum="30" SmallChange="1" Width="300" Value="6"
+                TickFrequency="1" IsSnapToTickEnabled="True"
+                Name="StarSl"/>
+        <TextBlock>Rating Wert:</TextBlock>
+        <Slider Minimum="0" Maximum="1" SmallChange="0.01" Width="300" Value="0.5"
+                TickFrequency="0.1"
+                Name="StarsValSl"/>
+        <TextBlock>Hier das Control:</TextBlock>
+        <local:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
+                             Value="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"
+                             Background="DarkKhaki"/>
+        <TextBox Text="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"/>
+        <local:Star Width="100" Height="100" Fill="Yellow"  NumberOfSpikes="9"/>
+      </StackPanel>
+    </TabItem>
+
+
+    <TabItem Header="Star">
+      <StackPanel>
+        <Button>bla</Button>
+        <local:Star Width="53" Height="53" Fill="Yellow" NumberOfSpikes="{Binding  ElementName=Sl, Path=Value, Mode=OneWay}"
+                    InnerRadiusRatio="0.4"
+                    Stroke="Black" StrokeThickness=".5"/>
+        <Slider Minimum="3" Maximum="30" SmallChange="1" Width="300" Value="6"
+                TickFrequency="1" IsSnapToTickEnabled="True"
+                Name="Sl"/>
+        <TextBox Text="{Binding ElementName=Sl, Path=Value, Mode=TwoWay}" Width="300" />
+      </StackPanel>
+    </TabItem>
   </TabControl>
 </Window>

@@ -1,0 +1,36 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ac="clr-namespace:AvaloniaControls;assembly=AvaloniaControls"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Style Selector="ac|HighlightableControl">
+    <!--<Design.PreviewWith>
+      <Border Padding="20">
+        <ac:HighlightableControl />
+      </Border>
+    </Design.PreviewWith>-->
+    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+    <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
+    <Setter Property="HighlightBrush" Value="{DynamicResource ThemeControlMidBrush}"/>
+    <!--<Setter Property="Stroke" Value="{DynamicResource ThemeBorderHighBrush}"/>-->
+    <!--<Setter Property="StrokeThickness" Value="0.5"/>-->
+    <Setter Property="Padding" Value="4"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <ac:Star NumberOfSpikes="5"
+                 InnerRadiusRatio="0.4" 
+                 Width="{TemplateBinding Width}"
+                 Height="{TemplateBinding Height}"
+                 Stroke="{TemplateBinding BorderBrush}"
+                 Fill="{TemplateBinding HighlightBrush}"
+                 StrokeThickness="0.5"
+                 />
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="ac|HighlightableControl[IsSelected=true]">
+    <Setter Property="HighlightBrush" Value="{DynamicResource HighlightBrush}"/>
+  </Style>
+</Styles>
