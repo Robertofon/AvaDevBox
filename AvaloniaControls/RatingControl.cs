@@ -8,6 +8,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
+using Avalonia.Data;
 using Avalonia.Styling;
 
 namespace AvaloniaControls
@@ -23,7 +24,7 @@ namespace AvaloniaControls
             AvaloniaProperty.Register<RatingControl, int>(nameof(NumberOfStars), 6, validate: ValidateNumberOfStars);
 
         public static readonly StyledProperty<double> ValueProperty =
-            AvaloniaProperty.Register<RatingControl, double>(nameof(NumberOfStars), 6, validate: ValidateValue);
+            AvaloniaProperty.Register<RatingControl, double>(nameof(NumberOfStars), 0, validate: ValidateValue);
 
         /// <summary>
         /// Defines the <see cref="StarItems"/> property.
@@ -37,8 +38,8 @@ namespace AvaloniaControls
         {
             ContentPresenter.ContentTemplateProperty.AddOwner<RatingControl>();
             NumberOfStarsProperty.Changed.Subscribe(OnNumberOfStarsChanged);
-            
-            //NumberOfStarsProperty.Changed..AddClassHandler<RatingControl>(x => x.OnNumberOfStarsChanged);
+            AffectsRender<RatingControl>(NumberOfStarsProperty, ValueProperty);
+            AffectsMeasure<RatingControl>(NumberOfStarsProperty);
             //TemplateProperty.OverrideDefaultValue(typeof());
         }
 
@@ -85,18 +86,28 @@ namespace AvaloniaControls
         {
             if (e.Sender is RatingControl rating)
             {
-                var oldValue = (int)e.OldValue;
                 var newValue = (int)e.NewValue;
-                rating.StarItems = Enumerable.Repeat("S", newValue);
+                UpdateStars(rating, newValue);
             }
+        }
+
+        private static void UpdateStars(RatingControl rating, int newValue)
+        {
+            //new ListBoxItem().
+            rating.StarItems = Enumerable.Repeat("S", newValue);
+        }
+
+        protected override void OnTemplateApplied(TemplateAppliedEventArgs e)
+        {
+
+
         }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            
-            //OnNumberOfStarsChanged(this)
-//            this.UpdateStars();
+//            OnNumberOfStarsChanged(new AvaloniaPropertyChangedEventArgs(this, NumberOfStarsProperty, 0, NumberOfStars, BindingPriority.Unset));
+            UpdateStars(this, NumberOfStars);
             //RaisePropertyChanged(StarItemsProperty,  );
         }
     }
