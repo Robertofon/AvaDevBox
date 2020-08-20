@@ -1,0 +1,28 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ac="clr-namespace:AvaloniaControls;assembly=AvaloniaControls"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Style Selector="ac|RatingControl">
+    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+    <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
+    <Setter Property="Padding" Value="4"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="DarkGray" BorderBrush="Beige" BorderThickness="1">
+          <Grid ColumnDefinitions="*,Auto">
+            <TextBlock Grid.Column="0" >c=</TextBlock>
+            <ItemsPresenter Items="{TemplateBinding StarItems}" >
+              <ItemsPresenter.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock>o</TextBlock>
+                </DataTemplate>
+              </ItemsPresenter.ItemTemplate>
+            </ItemsPresenter>
+          </Grid>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>
