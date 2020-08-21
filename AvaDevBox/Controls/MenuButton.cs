@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AvaloniaControls
+namespace AvaDevBox.Controls
 {
     class MenuButton
     {
