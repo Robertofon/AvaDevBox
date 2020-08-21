@@ -12,8 +12,10 @@ using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
+using Avalonia.Remote.Protocol.Input;
 using Avalonia.Styling;
 using JetBrains.Annotations;
+using Key = Avalonia.Input.Key;
 
 namespace AvaDevBox.Controls
 {
@@ -122,10 +124,34 @@ namespace AvaDevBox.Controls
         {
             base.OnTemplateApplied(e);
             _starsPresenter = e.NameScope.Get<ItemsPresenter>("PART_StarsPresenter");
-            _starsPresenter.Tapped += _starsPresenter_Tapped;
+            _starsPresenter.Tapped += OnStarsPresenter_Tapped;
+            _starsPresenter.KeyDown += OnStarsPresenter_KeyDown;
         }
 
-        private void _starsPresenter_Tapped(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void OnStarsPresenter_KeyDown(object sender, Avalonia.Input.KeyEventArgs e)
+        {
+            if (e.Source is IStyledElement stars)
+            {
+                double numberOfStars = this.NumberOfStars;
+                switch (e.Key)
+                {
+                    case Key.Left:
+                    case Key.OemMinus:
+                    case Key.FnLeftArrow:
+                        // Stars --
+                        this.Value = (Math.Round(this.Value * numberOfStars) - 1) / numberOfStars;
+                        break;
+                    case Key.Right:
+                    case Key.OemPlus:
+                    case Key.FnRightArrow:
+                        // Stars ++
+                        this.Value = (Math.Round(this.Value * numberOfStars) + 1) / numberOfStars;
+                        break;
+                }
+            }
+        }
+
+        private void OnStarsPresenter_Tapped(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             if (e.Source is IStyledElement star)
             {

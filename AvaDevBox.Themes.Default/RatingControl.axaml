@@ -23,7 +23,9 @@
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             <!-- stars --> 
-            <ItemsPresenter Grid.Column="1" Items="{TemplateBinding StarItems}" Name="PART_StarsPresenter" >
+            <ItemsPresenter Grid.Column="1" Items="{TemplateBinding StarItems}"
+                            Name="PART_StarsPresenter" 
+                            Focusable="True">
               <ItemsPresenter.ItemsPanel>
                 <ItemsPanelTemplate>
                   <StackPanel Orientation="Horizontal"/>
