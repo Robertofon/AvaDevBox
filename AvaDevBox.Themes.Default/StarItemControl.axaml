@@ -1,13 +1,12 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ac="clr-namespace:AvaloniaControls;assembly=AvaloniaControls"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+        xmlns:adb="https://flinkebits.de/avadevbox">
   <Design.PreviewWith>
     <Border Padding="20">
-      <ac:HighlightableControl Width="50" Height="50" IsSelected="True"/>
+      <adb:HighlightableControl Width="50" Height="50" IsSelected="True"/>
     </Border>
   </Design.PreviewWith>
-  <Style Selector="ac|StarItemControl">
+  <Style Selector="adb|StarItemControl">
 
     <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
@@ -19,7 +18,7 @@
 
     <Setter Property="Template">
       <ControlTemplate>
-        <ac:Star NumberOfSpikes="5"
+        <adb:Star NumberOfSpikes="5"
                  InnerRadiusRatio="0.4"
                  Width="{TemplateBinding Width}"
                  Height="{TemplateBinding Height}"
@@ -31,7 +30,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="ac|StarItemControl[IsSelected=true]">
+  <Style Selector="adb|StarItemControl[IsSelected=true]">
     <Setter Property="HighlightBrush" Value="{DynamicResource HighlightBrush}"/>
   </Style>
 </Styles>

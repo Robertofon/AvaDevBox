@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaControls", "Avaloni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaDevBox", "AvaDevBox\AvaDevBox.csproj", "{54845B12-0C77-404F-A12A-86BA1DBE6E22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaDevBox.Themes.Default", "AvaDevBox.Themes.Default\AvaDevBox.Themes.Default.csproj", "{BE5EFD65-2CC6-4498-847D-93C4EE459C5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{54845B12-0C77-404F-A12A-86BA1DBE6E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54845B12-0C77-404F-A12A-86BA1DBE6E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54845B12-0C77-404F-A12A-86BA1DBE6E22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5EFD65-2CC6-4498-847D-93C4EE459C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5EFD65-2CC6-4498-847D-93C4EE459C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5EFD65-2CC6-4498-847D-93C4EE459C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5EFD65-2CC6-4498-847D-93C4EE459C5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

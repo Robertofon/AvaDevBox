@@ -7,7 +7,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Media;
 
-namespace AvaloniaControls
+namespace AvaDevBox.Controls.Primitives
 {
     /// <summary>
     /// Control that is selectable and thus changes color.

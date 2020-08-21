@@ -1,13 +1,13 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ac="clr-namespace:AvaloniaControls;assembly=AvaloniaControls"
+        xmlns:adb="https://flinkebits.de/avadevbox"
         xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <Design.PreviewWith>
     <Border Padding="20">
-      <ac:RatingControl NumberOfStars="6" Value="0.3" Background="DarkMagenta" Content="abc" VerticalContentAlignment="Center"/>
+      <adb:RatingControl NumberOfStars="6" Value="0.3" Background="DarkMagenta" Content="abc" VerticalContentAlignment="Center"/>
     </Border>
   </Design.PreviewWith>
-  <Style Selector="ac|RatingControl">
+  <Style Selector="adb|RatingControl">
     <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
@@ -31,7 +31,7 @@
               </ItemsPresenter.ItemsPanel>
               <ItemsPresenter.ItemTemplate>
                 <DataTemplate>
-                  <ac:StarItemControl Width="32" Height="32" IsSelected="{Binding IsSelected, Mode=TwoWay}"/>
+                  <adb:StarItemControl Width="32" Height="32" IsSelected="{Binding IsSelected, Mode=TwoWay}"/>
                 </DataTemplate>
               </ItemsPresenter.ItemTemplate>
             </ItemsPresenter>

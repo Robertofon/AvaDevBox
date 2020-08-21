@@ -5,7 +5,7 @@ using Avalonia;
 using Avalonia.Controls.Shapes;
 using Avalonia.Media;
 
-namespace AvaloniaControls
+namespace AvaDevBox.Controls.Shapes
 {
     /// <summary>
     /// Provides a configurable star as a geometry shape.

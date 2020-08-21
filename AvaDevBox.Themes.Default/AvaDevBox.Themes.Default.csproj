@@ -1,14 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.9.11" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\AvaDevBox.Themes.Default\AvaDevBox.Themes.Default.csproj" />
     <ProjectReference Include="..\AvaDevBox\AvaDevBox.csproj" />
   </ItemGroup>
+
 </Project>

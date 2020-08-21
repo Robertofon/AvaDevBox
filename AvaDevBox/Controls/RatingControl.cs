@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reactive.Disposables;
 using System.Runtime.CompilerServices;
 using System.Text;
+using AvaDevBox.Utils;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
@@ -14,7 +15,7 @@ using Avalonia.Data;
 using Avalonia.Styling;
 using JetBrains.Annotations;
 
-namespace AvaloniaControls
+namespace AvaDevBox.Controls
 {
     /// <summary>
     /// This is a control that displays a defined number of stars and the user

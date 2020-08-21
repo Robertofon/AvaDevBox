@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AvaloniaControls
+namespace AvaDevBox.Utils
 {
     public static class Extensions
     {
