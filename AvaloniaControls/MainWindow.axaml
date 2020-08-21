@@ -8,6 +8,12 @@
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
+    <TabItem Header="RoundSliderControl">
+      <StackPanel>
+        <TextBlock>Der runde Slider</TextBlock>
+      </StackPanel>    
+    </TabItem>
+  
     <TabItem Header="RatingControl">
       <StackPanel>
         <TextBlock>Anzahl Sterne:</TextBlock>
@@ -28,7 +34,7 @@
         <TextBlock>Styled version:</TextBlock>
         <Panel>
           <Panel.Styles>
-            <Style Selector="local|HighlightableControl">
+            <Style Selector="local|StarItemControl">
               <Setter Property="Template">
                 <ControlTemplate>
                   <Ellipse Width="{TemplateBinding Width}"
@@ -57,11 +63,11 @@
       <StackPanel>
         <WrapPanel>
           <CheckBox Name="star1" IsChecked="True" Content="Star akt" IsThreeState="False"/>
-          <local:HighlightableControl Width="53" Height="53" IsSelected="{Binding #star1.IsChecked}" />
+          <local:StarItemControl Width="53" Height="53" IsSelected="{Binding #star1.IsChecked}" />
         </WrapPanel>
         <WrapPanel>
           <CheckBox Name="star2" IsChecked="False" Content="Star deakt" IsThreeState="False"/>
-          <local:HighlightableControl Width="53" Height="53" IsSelected="{Binding #star2.IsChecked}" />
+          <local:StarItemControl Width="53" Height="53" IsSelected="{Binding #star2.IsChecked}" />
         </WrapPanel>
       </StackPanel>
     </TabItem>

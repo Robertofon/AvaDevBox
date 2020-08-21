@@ -31,7 +31,7 @@
               </ItemsPresenter.ItemsPanel>
               <ItemsPresenter.ItemTemplate>
                 <DataTemplate>
-                  <ac:HighlightableControl Width="32" Height="32" IsSelected="{Binding IsSelected, Mode=TwoWay}"/>
+                  <ac:StarItemControl Width="32" Height="32" IsSelected="{Binding IsSelected, Mode=TwoWay}"/>
                 </DataTemplate>
               </ItemsPresenter.ItemTemplate>
             </ItemsPresenter>

@@ -12,28 +12,28 @@ namespace AvaloniaControls
     /// <summary>
     /// Control that is selectable and thus changes color.
     /// </summary>
-    public class HighlightableControl : TemplatedControl, ISelectable
+    public class StarItemControl : TemplatedControl, ISelectable
     {
         /// <summary>
         /// Defines the <see cref="IsSelected"/> property.
         /// </summary>
         public static readonly StyledProperty<bool> IsSelectedProperty =
-            ListBoxItem.IsSelectedProperty.AddOwner<HighlightableControl>();
+            ListBoxItem.IsSelectedProperty.AddOwner<StarItemControl>();
         
         /// <summary>
         /// Defines the  property.
         /// </summary>
         public static readonly StyledProperty<IBrush> HighlightBrushProperty =
-            AvaloniaProperty.Register<HighlightableControl, IBrush>(nameof(HighlightBrush));
+            AvaloniaProperty.Register<StarItemControl, IBrush>(nameof(HighlightBrush));
 
 
-        static HighlightableControl()
+        static StarItemControl()
         {
-            AffectsRender<HighlightableControl>(IsSelectedProperty, HighlightBrushProperty);
+            AffectsRender<StarItemControl>(IsSelectedProperty, HighlightBrushProperty);
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the <see cref="HighlightableControl"/> is currently selected.
+        /// Gets or sets a value indicating whether the <see cref="StarItemControl"/> is currently selected.
         /// </summary>
         public bool IsSelected
         {

@@ -7,7 +7,7 @@
       <ac:HighlightableControl Width="50" Height="50" IsSelected="True"/>
     </Border>
   </Design.PreviewWith>
-  <Style Selector="ac|HighlightableControl">
+  <Style Selector="ac|StarItemControl">
 
     <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
@@ -31,7 +31,7 @@
     </Setter>
   </Style>
 
-  <Style Selector="ac|HighlightableControl[IsSelected=true]">
+  <Style Selector="ac|StarItemControl[IsSelected=true]">
     <Setter Property="HighlightBrush" Value="{DynamicResource HighlightBrush}"/>
   </Style>
 </Styles>
