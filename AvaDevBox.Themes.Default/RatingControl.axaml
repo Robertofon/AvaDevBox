@@ -4,7 +4,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <Design.PreviewWith>
     <Border Padding="20">
-      <adb:RatingControl NumberOfStars="6" Value="0.3" Background="DarkMagenta" Content="abc" VerticalContentAlignment="Center"/>
+      <adb:RatingControl NumberOfStars="6" Value="0.3" Background="DarkGray" Content="abc" VerticalContentAlignment="Center"/>
     </Border>
   </Design.PreviewWith>
   <Style Selector="adb|RatingControl">

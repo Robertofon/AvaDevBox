@@ -1,0 +1,39 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:adb="https://flinkebits.de/avadevbox"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaControls.Demo.RulerDemo">
+  <StackPanel Name="Sp">
+    <TextBlock>Der Ruler</TextBlock>
+    <StackPanel Orientation="Horizontal">
+      <StackPanel Width="200">
+        <TextBlock>SmallDist</TextBlock>
+        <Slider Name="TickSl" Orientation="Horizontal" Minimum="0.5" Maximum="50" SmallChange="1" Value="6"/>
+      </StackPanel>
+      <TextBlock Text="{Binding #TickSl.Value}" Width="20"/>
+      <StackPanel Width="200">
+        <TextBlock>StrokeTh</TextBlock>
+        <Slider Name="StrokeTh" Orientation="Horizontal" Minimum="0.1" Maximum="5" SmallChange=".1" Value="1"/>
+      </StackPanel>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <StackPanel Width="200">
+        <TextBlock>TickFreq1</TextBlock>
+        <Slider Name="TickFS1" Orientation="Horizontal" Minimum="1" Maximum="50" SmallChange="1" Value="2" IsSnapToTickEnabled="True"/>
+      </StackPanel>
+      <TextBlock Text="{Binding #TickFS1.Value}" Width="20"/>
+      <StackPanel Width="200">
+        <TextBlock>TickFreq2</TextBlock>
+        <Slider Name="TickFS2" Orientation="Horizontal" Minimum="1" Maximum="50" SmallChange="1" Value="5" IsSnapToTickEnabled="True" />
+      </StackPanel>
+      <TextBlock Text="{Binding #TickFS2.Value}" Width="20"/>
+    </StackPanel>
+    <Border Background="AntiqueWhite">
+      <adb:RulerShape Width="400" Height="30"  Stroke="DarkBlue"
+                      TickFreq1="{Binding #TickFS1.Value}" TickFreq2="{Binding #TickFS2.Value}"
+                      StrokeThickness="{Binding #StrokeTh.Value}" SmallTickDist="{Binding #TickSl.Value}"/>
+    </Border>
+  </StackPanel>
+</UserControl>

@@ -4,18 +4,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:adb="https://flinkebits.de/avadevbox"
         xmlns:shapes="clr-namespace:AvaDevBox.Controls.Shapes;assembly=AvaDevBox"
+        xmlns:demo="clr-namespace:AvaloniaControls.Demo"
         xmlns:pr="clr-namespace:AvaDevBox.Controls.Primitives;assembly=AvaDevBox"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
-        Width="400"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
+        Width="600"
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
+    <TabItem Header="Ruler shape" >
+      <TabItem.Content>
+        <demo:RulerDemo/>
+      </TabItem.Content>
+    </TabItem>
+    
     <TabItem Header="RoundSliderControl">
       <StackPanel>
         <TextBlock>Der runde Slider</TextBlock>
-      </StackPanel>    
+      </StackPanel>
     </TabItem>
-  
+
     <TabItem Header="RatingControl">
       <StackPanel>
         <TextBlock>Anzahl Sterne:</TextBlock>

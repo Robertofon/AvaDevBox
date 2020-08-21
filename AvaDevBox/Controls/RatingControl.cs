@@ -130,22 +130,35 @@ namespace AvaDevBox.Controls
 
         private void OnStarsPresenter_KeyDown(object sender, Avalonia.Input.KeyEventArgs e)
         {
-            if (e.Source is IStyledElement stars)
+            if (e.Source is IStyledElement)
             {
                 double numberOfStars = this.NumberOfStars;
                 switch (e.Key)
                 {
                     case Key.Left:
+                    case Key.Subtract:
                     case Key.OemMinus:
                     case Key.FnLeftArrow:
                         // Stars --
                         this.Value = (Math.Round(this.Value * numberOfStars) - 1) / numberOfStars;
                         break;
                     case Key.Right:
+                    case Key.Add:
                     case Key.OemPlus:
                     case Key.FnRightArrow:
                         // Stars ++
                         this.Value = (Math.Round(this.Value * numberOfStars) + 1) / numberOfStars;
+                        break;
+                    case Key.NumPad0:
+                    case Key.D0:
+                    case Key.Delete:
+                        // Stars 0
+                        this.Value = 0;
+                        break;
+                    case Key.NumPad1:
+                    case Key.D1:
+                        // Stars 1
+                        this.Value = 1;
                         break;
                 }
             }
