@@ -4,15 +4,17 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <Design.PreviewWith>
     <Border Padding="20">
-      <adb:LedIndicator Width="100" Height="100"/>
+      <adb:LedIndicator Width="100" Height="100" IsChecked="True"/>
     </Border>
   </Design.PreviewWith>
   <Style Selector="adb|LedIndicator">
-    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+    <Setter Property="Background" Value="Transparent"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
     <Setter Property="BorderThickness" Value="0"/>
     <Setter Property="Width" Value="36"/>
     <Setter Property="Height" Value="36"/>
+    <Setter Property="OnColor" Value="Red"/>
+    <Setter Property="Foreground" Value="DarkGray"/>
 
     <Setter Property="Template">
       <ControlTemplate>
@@ -32,10 +34,10 @@
                 </Ellipse.Fill>
               </Ellipse>
 
-               <Ellipse Width="80" Height="80"  Margin="10"
-                        Fill="Blue">
+               <Ellipse Name="mainColor" Fill="{TemplateBinding OnColor}"
+                        Width="80" Height="80"  Margin="10">
                </Ellipse>
-               <Ellipse Width="80" Height="80" Margin="10" Opacity="0.6">
+               <Ellipse Width="80" Height="80" Margin="10" Opacity="0.6" StrokeThickness="0.5" Stroke="Black">
                  <Ellipse.Fill>
                    <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="100,100">
                      <GradientBrush.GradientStops>
@@ -48,7 +50,11 @@
 
                <Ellipse Width="40" Height="20" Margin="23,25" Opacity="0.3" VerticalAlignment="Top" HorizontalAlignment="Left">
                  <Ellipse.Fill>
-                   <RadialGradientBrush Center="25,10" SpreadMethod="Pad"  Radius="6">
+                   <RadialGradientBrush Center="0,0" GradientOrigin="10,10" Radius="1">
+                     <RadialGradientBrush.GradientStops>
+                       <GradientStop Color="#000000" Offset="0"/>
+                       <GradientStop Color="#FFFFFF" Offset="0.66"/>
+                     </RadialGradientBrush.GradientStops>
                    </RadialGradientBrush>
                  </Ellipse.Fill>
                </Ellipse>
@@ -57,5 +63,18 @@
         </Border>
       </ControlTemplate>
     </Setter>
+  </Style>
+
+  <Style Selector="adb|LedIndicator:unchecked /template/ Ellipse#mainColor">
+    <Setter Property="Transitions">
+      <Transitions>
+        <DoubleTransition Duration="0:0:0.2" Property="Opacity" />
+      </Transitions>
+    </Setter>
+    <Setter Property="Opacity" Value="0"/>
+  </Style>
+  
+  <Style Selector="adb|LedIndicator:indeterminate /template/ Ellipse#mainColor">
+    <Setter Property="Opacity" Value="0.5"/>
   </Style>
 </Styles>

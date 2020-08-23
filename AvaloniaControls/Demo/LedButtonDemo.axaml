@@ -7,7 +7,7 @@
              x:Class="AvaloniaControls.Demo.LedButtonDemo">
   <StackPanel>
     <TextBlock> LED indikator:</TextBlock>
-    <adb:LedIndicator IsChecked="{Binding #Cb.IsChecked}"  />
+    <adb:LedIndicator IsChecked="{Binding #Cb.IsChecked}" OnColor="#0000ff" />
     <CheckBox Name="Cb" IsChecked="true" Content="Teste mich"/>
   </StackPanel>
 </UserControl>
