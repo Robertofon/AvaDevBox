@@ -1,0 +1,43 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:adb="https://flinkebits.de/avadevbox"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <adb:LedButton Width="200" Height="100" IsChecked="True" OnColor="GreenYellow" Content="Test"/>
+    </Border>
+  </Design.PreviewWith>
+  <Style Selector="adb|LedButton">
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Height" Value="36"/>
+    <Setter Property="OnColor" Value="Red"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="Auto,*">
+          <adb:LedIndicator 
+            Grid.Column="0"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            IsChecked="{TemplateBinding IsChecked}"
+            OnColor="{TemplateBinding OnColor}"
+            Width="{TemplateBinding Height}"
+            Height="{TemplateBinding Height}"/>
+
+          <ContentPresenter Name="PART_ContentPresenter"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Content="{TemplateBinding Content}"
+                            Margin="{TemplateBinding Padding}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            IsVisible="{TemplateBinding Content, Converter={x:Static ObjectConverters.IsNotNull}}"
+                            Grid.Column="1"/>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

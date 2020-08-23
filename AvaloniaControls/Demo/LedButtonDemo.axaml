@@ -7,7 +7,31 @@
              x:Class="AvaloniaControls.Demo.LedButtonDemo">
   <StackPanel>
     <TextBlock> LED indikator:</TextBlock>
-    <adb:LedIndicator IsChecked="{Binding #Cb.IsChecked}" OnColor="#0000ff" />
+    <WrapPanel>
+      <TextBlock>Positiv:</TextBlock>
+      <adb:LedIndicator IsChecked="{Binding #Cb.IsChecked}" OnColor="#0000ff" Width="46" Height="46"/>
+      <TextBlock>Negaitiv:</TextBlock>
+      <adb:LedIndicator IsChecked="{Binding !#Cb.IsChecked}" OnColor="#0000ff" />
+      <TextBlock>Blink:</TextBlock>
+      <adb:LedIndicator IsChecked="{x:Null}" OnColor="#00ff00" />
+    </WrapPanel>
     <CheckBox Name="Cb" IsChecked="true" Content="Teste mich"/>
+
+    <TextBlock>LED Button:</TextBlock>
+    <WrapPanel>
+      <adb:LedButton IsChecked="{Binding #Cb.IsChecked}" OnColor="#00ffff"
+                     Content="Button Positiv"/>
+      <adb:LedButton IsChecked="{Binding !#Cb.IsChecked}" OnColor="#FF0033"
+                     Content="Button Negativ (Content)"/>
+    </WrapPanel>
+
+    <TextBlock>LED Button 3-State:</TextBlock>
+    <adb:LedButton  OnColor="#FFEE00"
+                   IsThreeState="True"
+                    IsChecked="{x:Null}"
+                   Content="3-State-Button"
+                   VerticalContentAlignment="Center"
+                   Height="66"/>
+
   </StackPanel>
 </UserControl>
