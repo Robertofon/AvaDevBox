@@ -11,12 +11,18 @@
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
+    <TabItem Header="LED button" >
+      <TabItem.Content>
+        <demo:LedButtonDemo/>
+      </TabItem.Content>
+    </TabItem>
+
     <TabItem Header="Ruler shape" >
       <TabItem.Content>
         <demo:RulerDemo/>
       </TabItem.Content>
     </TabItem>
-    
+
     <TabItem Header="RoundSliderControl">
       <StackPanel>
         <TextBlock>Der runde Slider</TextBlock>

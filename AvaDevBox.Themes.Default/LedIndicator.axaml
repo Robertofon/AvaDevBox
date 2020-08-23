@@ -1,0 +1,61 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:adb="https://flinkebits.de/avadevbox"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <adb:LedIndicator Width="100" Height="100"/>
+    </Border>
+  </Design.PreviewWith>
+  <Style Selector="adb|LedIndicator">
+    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Width" Value="36"/>
+    <Setter Property="Height" Value="36"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}">
+           <Viewbox Stretch="Fill">
+             <Grid >
+              <Ellipse Width="100" Height="100" StrokeThickness="1" Stroke="#222222">
+                <Ellipse.Fill>
+                  <LinearGradientBrush SpreadMethod="Pad" StartPoint="1,1" EndPoint="99,99">
+                    <GradientBrush.GradientStops>
+                      <GradientStop Color="#FF444444" Offset="0.2"/>
+                      <GradientStop Color="#FFDDDDDD" Offset="0.8"/>
+                    </GradientBrush.GradientStops>
+                  </LinearGradientBrush>
+                </Ellipse.Fill>
+              </Ellipse>
+
+               <Ellipse Width="80" Height="80"  Margin="10"
+                        Fill="Blue">
+               </Ellipse>
+               <Ellipse Width="80" Height="80" Margin="10" Opacity="0.6">
+                 <Ellipse.Fill>
+                   <LinearGradientBrush SpreadMethod="Pad" StartPoint="0,0" EndPoint="100,100">
+                     <GradientBrush.GradientStops>
+                       <GradientStop Color="#000000" Offset="0.1"/>
+                       <GradientStop Color="#FFFFFF" Offset="0.66"/>
+                     </GradientBrush.GradientStops>
+                   </LinearGradientBrush>
+                 </Ellipse.Fill>
+               </Ellipse>
+
+               <Ellipse Width="40" Height="20" Margin="23,25" Opacity="0.3" VerticalAlignment="Top" HorizontalAlignment="Left">
+                 <Ellipse.Fill>
+                   <RadialGradientBrush Center="25,10" SpreadMethod="Pad"  Radius="6">
+                   </RadialGradientBrush>
+                 </Ellipse.Fill>
+               </Ellipse>
+             </Grid>
+           </Viewbox>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

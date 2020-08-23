@@ -1,4 +1,5 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui">
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/StarItemControl.axaml"/>
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/RatingControl.axaml"/>
+  <StyleInclude Source="avares://AvaDevBox.Themes.Default/LedIndicator.axaml"/>
 </Styles>

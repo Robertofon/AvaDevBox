@@ -3,7 +3,7 @@
         xmlns:adb="https://flinkebits.de/avadevbox">
   <Design.PreviewWith>
     <Border Padding="20">
-      <adb:HighlightableControl Width="50" Height="50" IsSelected="True"/>
+      <adb:StarItemControl Width="50" Height="50" IsSelected="True"/>
     </Border>
   </Design.PreviewWith>
   <Style Selector="adb|StarItemControl">
