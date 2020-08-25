@@ -1,0 +1,50 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:adb="https://flinkebits.de/avadevbox"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaControls.Demo.RatingControlDemo">
+      <StackPanel>
+        <TextBlock>Anzahl Sterne:</TextBlock>
+        <Slider Minimum="0" Maximum="30" SmallChange="1" Width="300" Value="6"
+                TickFrequency="1" IsSnapToTickEnabled="True"
+                Name="StarSl"/>
+        <TextBlock>Rating Wert:</TextBlock>
+        <Slider Minimum="0" Maximum="1" SmallChange="0.01" Width="300" Value="0.5"
+                TickFrequency="0.1"
+                Name="StarsValSl"/>
+        <TextBlock>Hier das Control:</TextBlock>
+        <adb:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
+                             Value="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"
+                             Background="DarkKhaki">
+          <Button>Testcontent</Button>
+        </adb:RatingControl>
+        <TextBox Text="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"/>
+        <TextBlock>Styled version:</TextBlock>
+        <Panel>
+          <Panel.Styles>
+            <Style Selector="adb|StarItemControl">
+              <Setter Property="Template">
+                <ControlTemplate>
+                  <Ellipse Width="{TemplateBinding Width}"
+                           Height="{TemplateBinding Height}"
+                           Stroke="{TemplateBinding BorderBrush}"
+                           Margin="1"
+                           Fill="{TemplateBinding HighlightBrush}"
+                           StrokeThickness="0.5"
+                  />
+                </ControlTemplate>
+              </Setter>
+            </Style>
+
+          </Panel.Styles>
+          <adb:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
+                               Value="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"
+                               Background="DarkKhaki">
+            Styled mit Ellipse
+          </adb:RatingControl>
+        </Panel>
+
+      </StackPanel>
+</UserControl>

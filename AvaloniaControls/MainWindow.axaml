@@ -12,15 +12,15 @@
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
     <TabItem Header="LED button" >
-      <TabItem.Content>
-        <demo:LedButtonDemo/>
-      </TabItem.Content>
+      <demo:LedButtonDemo/>
+    </TabItem>
+
+    <TabItem Header="MenuButton" >
+      <demo:MenuButtonDemo/>
     </TabItem>
 
     <TabItem Header="Ruler shape" >
-      <TabItem.Content>
-        <demo:RulerDemo/>
-      </TabItem.Content>
+       <demo:RulerDemo/>
     </TabItem>
 
     <TabItem Header="RoundSliderControl">
@@ -30,51 +30,10 @@
     </TabItem>
 
     <TabItem Header="RatingControl">
-      <StackPanel>
-        <TextBlock>Anzahl Sterne:</TextBlock>
-        <Slider Minimum="0" Maximum="30" SmallChange="1" Width="300" Value="6"
-                TickFrequency="1" IsSnapToTickEnabled="True"
-                Name="StarSl"/>
-        <TextBlock>Rating Wert:</TextBlock>
-        <Slider Minimum="0" Maximum="1" SmallChange="0.01" Width="300" Value="0.5"
-                TickFrequency="0.1"
-                Name="StarsValSl"/>
-        <TextBlock>Hier das Control:</TextBlock>
-        <adb:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
-                             Value="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"
-                             Background="DarkKhaki">
-          <Button>Testcontent</Button>
-        </adb:RatingControl>
-        <TextBox Text="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"/>
-        <TextBlock>Styled version:</TextBlock>
-        <Panel>
-          <Panel.Styles>
-            <Style Selector="adb|StarItemControl">
-              <Setter Property="Template">
-                <ControlTemplate>
-                  <Ellipse Width="{TemplateBinding Width}"
-                           Height="{TemplateBinding Height}"
-                           Stroke="{TemplateBinding BorderBrush}"
-                           Margin="1"
-                           Fill="{TemplateBinding HighlightBrush}"
-                           StrokeThickness="0.5"
-                  />
-                </ControlTemplate>
-              </Setter>
-            </Style>
-
-          </Panel.Styles>
-          <adb:RatingControl NumberOfStars="{Binding  ElementName=StarSl, Path=Value, Mode=TwoWay}"
-                               Value="{Binding ElementName=StarsValSl, Path=Value, Mode=TwoWay}"
-                               Background="DarkKhaki">
-            Styled mit Ellipse
-          </adb:RatingControl>
-        </Panel>
-
-      </StackPanel>
+      <demo:RatingControlDemo/>
     </TabItem>
 
-     <TabItem Header="Highlight">
+     <TabItem Header="StarItemControl">
       <StackPanel>
         <WrapPanel>
           <CheckBox Name="star1" IsChecked="True" Content="Star akt" IsThreeState="False"/>
@@ -87,7 +46,7 @@
       </StackPanel>
     </TabItem>
 
-    <TabItem Header="Star">
+    <TabItem Header="Star Shape">
       <StackPanel>
         <Button>bla</Button>
         <shapes:Star Width="53" Height="53" Fill="Yellow" NumberOfSpikes="{Binding  ElementName=Sl, Path=Value, Mode=OneWay}"

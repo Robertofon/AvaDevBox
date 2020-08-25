@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Avalonia.Controls;
 
 namespace AvaDevBox.Controls
 {
-    class MenuButton
+    public class MenuButton : Button
     {
     }
 }
