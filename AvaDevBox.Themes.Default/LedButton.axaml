@@ -40,4 +40,7 @@
       </ControlTemplate>
     </Setter>
   </Style>
+  <Style Selector="adb|LedButton:disabled">
+    <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}"/>
+  </Style>
 </Styles>

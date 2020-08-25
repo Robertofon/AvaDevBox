@@ -11,12 +11,12 @@
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
-    <TabItem Header="LED button" >
-      <demo:LedButtonDemo/>
-    </TabItem>
-
     <TabItem Header="MenuButton" >
       <demo:MenuButtonDemo/>
+    </TabItem>
+
+    <TabItem Header="LED button" >
+      <demo:LedButtonDemo/>
     </TabItem>
 
     <TabItem Header="Ruler shape" >

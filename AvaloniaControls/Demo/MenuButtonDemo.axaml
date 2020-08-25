@@ -5,7 +5,16 @@
              xmlns:adb="https://flinkebits.de/avadevbox"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaControls.Demo.MenuButtonDemo">
-  <adb:MenuButton>
-    <Ellipse Width="30" Height="22" Fill="Pink" Stroke="Bisque" StrokeThickness="3"/>
-  </adb:MenuButton>
+  <WrapPanel Orientation="Vertical">
+    <TextBlock>The menu button:</TextBlock>
+    <adb:MenuButton ClickMode="Release" Click="ClickEvent">
+      <WrapPanel>
+        <TextBlock>Text</TextBlock>
+        <Ellipse Width="30" Height="22" Fill="Red" Stroke="Blue" StrokeThickness="3"/>
+      </WrapPanel>
+    </adb:MenuButton>
+
+
+    <TextBlock>Test Time</TextBlock>
+  </WrapPanel>
 </UserControl>

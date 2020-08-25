@@ -28,10 +28,14 @@
     <TextBlock>LED Button 3-State:</TextBlock>
     <adb:LedButton  OnColor="#FFEE00"
                    IsThreeState="True"
-                    IsChecked="{x:Null}"
+                   IsChecked="{x:Null}"
                    Content="3-State-Button"
                    VerticalContentAlignment="Center"
+                    IsEnabled="{Binding !#DisCb.IsChecked}"
                    Height="66"/>
 
+    <CheckBox Content="Disable above" Name="DisCb" IsChecked="False"/>
+
+    <adb:LedButton Content="Disabled" IsEnabled="False" IsChecked="True"/>
   </StackPanel>
 </UserControl>

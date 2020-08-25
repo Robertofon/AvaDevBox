@@ -16,7 +16,7 @@ namespace AvaDevBox.Controls
 
         static LedButton()
         {
-
+            FocusableProperty.OverrideDefaultValue(typeof(LedButton), true);
         }
 
         public IBrush OnColor
