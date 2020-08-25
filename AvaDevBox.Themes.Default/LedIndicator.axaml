@@ -4,7 +4,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <Design.PreviewWith>
     <Border Padding="20">
-      <adb:LedIndicator Width="100" Height="100" IsChecked="{x:Null}"  OnColor="Brown"/>
+      <adb:LedIndicator Width="100" Height="100" IsChecked="True"  OnColor="Green"/>
     </Border>
   </Design.PreviewWith>
   <Style Selector="adb|LedIndicator">
@@ -22,6 +22,7 @@
                 BorderThickness="{TemplateBinding BorderThickness}">
           <Viewbox Stretch="Fill">
             <Grid >
+              <!-- metal frame -->
               <Ellipse Width="100" Height="100" StrokeThickness="1" Stroke="#222222">
                 <Ellipse.Fill>
                   <LinearGradientBrush SpreadMethod="Pad" StartPoint="1,1" EndPoint="99,99">
@@ -33,6 +34,7 @@
                 </Ellipse.Fill>
               </Ellipse>
 
+              <!-- Main color part -->
               <Ellipse Name="mainColor" Fill="{TemplateBinding OnColor}"
                        Width="80" Height="80"  Margin="10">
               </Ellipse>
@@ -46,8 +48,9 @@
                   </LinearGradientBrush>
                 </Ellipse.Fill>
               </Ellipse>
-
-              <Ellipse Width="40" Height="20" Margin="23,25" Opacity="0.3" VerticalAlignment="Top" HorizontalAlignment="Left">
+              
+              <!-- glare -->
+              <Ellipse Width="40" Height="20" Margin="23,28" Opacity="0.3" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Ellipse.Fill>
                   <RadialGradientBrush Center="0,0" GradientOrigin="10,10" Radius="1">
                     <RadialGradientBrush.GradientStops>
@@ -56,6 +59,9 @@
                     </RadialGradientBrush.GradientStops>
                   </RadialGradientBrush>
                 </Ellipse.Fill>
+                <Ellipse.RenderTransform>
+                  <RotateTransform Angle="-25"/>
+                </Ellipse.RenderTransform>
               </Ellipse>
             </Grid>
           </Viewbox>
