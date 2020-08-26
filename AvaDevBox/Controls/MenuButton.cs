@@ -73,25 +73,41 @@ namespace AvaDevBox.Controls
             _popupBtn.AddHandler(PointerReleasedEvent, PopupBtnPointerReleased, RoutingStrategies.Tunnel);
 
             // Quit processing after popup content has done the job. Prevent _mainButton from doing so.
-            _popup.AddHandler(PointerPressedEvent, PopupPointerPressed, RoutingStrategies.Bubble);
-            _popup.AddHandler(PointerReleasedEvent, PopupPointerReleased, RoutingStrategies.Bubble);
+            _popup.AddHandler(ClickEvent, (sender, ea) => ea.Handled = true, RoutingStrategies.Bubble);
+            _popup.AddHandler(PointerPressedEvent, (sender, e1) => e1.Handled = true, RoutingStrategies.Bubble);
+            _popup.AddHandler(PointerReleasedEvent, (sender, e1) => e1.Handled = true, RoutingStrategies.Bubble);
 
+            // House keeping for Pseudoclasses
+            _popup.Opened += PopupOnOpened;
+            _popup.Closed += PopupOnClosed;
+
+            // Grab key events beforehand
             _popupBtn.AddHandler(KeyDownEvent, PopupBtnKeyDown, RoutingStrategies.Tunnel);
             _popupBtn.AddHandler(KeyUpEvent, PopupBtnKeyUp, RoutingStrategies.Tunnel);
         }
 
+        private void PopupOnOpened(object sender, EventArgs e)
+        {
+            UpdatePseudoClasses(true);
+        }
+
+        private void PopupOnClosed(object sender, EventArgs e)
+        {
+            UpdatePseudoClasses(false);
+        }
+
         private void PopupBtnKeyUp(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                _popup.IsOpen = !_popup.IsOpen;
+            }
+
             e.Handled = true;
         }
 
         private void PopupBtnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
-            {
-                this._popup.IsOpen = !_popup.IsOpen;
-            }
-
             e.Handled = true;
         }
 
@@ -113,84 +129,10 @@ namespace AvaDevBox.Controls
             e.Handled = true;
         }
 
-        private void PopupPointerPressed(object sender, PointerPressedEventArgs e)
+        private void UpdatePseudoClasses(bool isPressed)
         {
-            e.Handled = true;
+            PseudoClasses.Set(":popupbtnpressed", isPressed);
         }
 
-        private void PopupPointerReleased(object sender, PointerReleasedEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        /// <summary>
-        /// Invokes the <see cref="PopUpButtonClick"/> event.
-        /// </summary>
-        protected virtual void OnPopupBtnClick()
-        {
-            _popup.IsOpen = true;
-            //var e = new RoutedEventArgs(ClickEvent);
-            //RaiseEvent(e);
-
-            //if (!e.Handled && Command?.CanExecute(CommandParameter) == true)
-            //{
-            //    Command.Execute(CommandParameter);
-            //    e.Handled = true;
-            //}
-        }
-
-        /// <inheritdoc/>
-        protected override void OnKeyUp(KeyEventArgs e)
-        {
-            //if(_popupBtn.IsFocused)
-            //{
-            //    // popupmenu
-            //    OnPopupBtnClick();
-            //    e.Handled = true;
-            //    return;
-            //}
-            //else if (_mainButton.IsFocused)
-            //{
-
-            //}
-
-            base.OnKeyUp(e);
-        }
-
-        /// <inheritdoc/>
-        protected override void OnPointerPressed(PointerPressedEventArgs e)
-        {
-            //IEnumerable<IVisual> visualsAt = this.GetVisualsAt(e.GetPosition(this));
-            //bool hitPopupBtn = visualsAt.Any(v => _popupBtn == v || _popupBtn.IsVisualAncestorOf(v));
-            //if (hitPopupBtn)
-            //{
-            //    if (this.ClickMode == ClickMode.Press)
-            //    {
-            //        _popup.Open();
-            //    }
-            //    e.Handled = true;
-            //    return;
-            //}
-
-            base.OnPointerPressed(e);
-        }
-
-        /// <inheritdoc/>
-        protected override void OnPointerReleased(PointerReleasedEventArgs e)
-        {
-            //IEnumerable<IVisual> visualsAt = this.GetVisualsAt(e.GetPosition(this));
-            //bool hitPopupBtn = visualsAt.Any(v => _popupBtn == v || _popupBtn.IsVisualAncestorOf(v));
-            //if (hitPopupBtn)
-            //{
-            //    if (ClickMode == ClickMode.Release)
-            //    {
-            //        _popup.Open();
-            //    }
-            //    e.Handled = true;
-            //    return;
-            //}
-
-            base.OnPointerReleased(e);
-        }
     }
 }

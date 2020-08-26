@@ -7,37 +7,36 @@
              x:Class="AvaloniaControls.Demo.MenuButtonDemo">
   <WrapPanel Orientation="Vertical">
     <TextBlock>The menu button Clickmode=Release:</TextBlock>
-    <adb:MenuButton ClickMode="Release" Click="ClickEvent">
+    <adb:MenuButton ClickMode="Release" Click="ClickEvent" Width="150">
       <adb:MenuButton.PopupContent>
-        <Grid ColumnDefinitions="Auto,Auto">
+        <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto">
           <Ellipse Width="33" Height="22" Grid.Column="0" Fill="AliceBlue"/>
           <TextBlock Grid.Column="1">Textt</TextBlock>
+          <Button Grid.Row="1" Click="ClickTest1">test1</Button>
+          <Button Grid.Row="2" Click="ClickTest2">test2</Button>
         </Grid>
       </adb:MenuButton.PopupContent>
       <WrapPanel>
         <TextBlock>Text</TextBlock>
-        <Ellipse Width="30" Height="22" Fill="Red" Stroke="Blue" StrokeThickness="3"/>
+        <Ellipse Width="23" Height="42" Fill="Yellow" Stroke="Blue" StrokeThickness="3"/>
       </WrapPanel>
     </adb:MenuButton>
 
-    <TextBlock>The menu button Clickmode=Press:</TextBlock>
-    <adb:MenuButton ClickMode="Press" Click="ClickEvent" PopupContent="1">
+    <TextBlock Margin="0,50,0,0">The menu button Clickmode=Press:</TextBlock>
+    <adb:MenuButton ClickMode="Press" Click="ClickEvent" 
+                    IsEnabled="{Binding !#dis.IsChecked}">
+      <adb:MenuButton.PopupContent>
+        s
+      </adb:MenuButton.PopupContent>
       <adb:MenuButton.PopupContentTemplate>
         <DataTemplate>
           <Grid ColumnDefinitions="Auto,Auto, Auto">
             <Rectangle Width="33" Height="22" Grid.Column="0" Fill="Cornsilk"/>
             <TextBlock Grid.Column="1">Texttemplate</TextBlock>
+            <CheckBox Content="{Binding }"/>
             <Button Content="Blub" Grid.Column="2"/>
           </Grid>
         </DataTemplate>
-        <!--<ContextMenu>
-          <MenuItem Header="Menü1"/>
-          <MenuItem Header="Menü2"/>
-          <Separator />
-          <MenuItem Header="Menü3" IsSelected="True">
-            <MenuItem Header="Submenü1"/>
-          </MenuItem>
-        </ContextMenu>-->
       </adb:MenuButton.PopupContentTemplate>
       <WrapPanel>
         <TextBlock>Text</TextBlock>
@@ -47,7 +46,8 @@
 
 
     <!--distanz-->
-    <Panel Height="200"/>  
+    <Panel Height="200"/>
+    <CheckBox Name="dis" IsChecked="False" Content="Disable"/>
     <ListBox Name="listbox" Width="200" Height="200"></ListBox>
     <TextBlock>Test Time</TextBlock>
     <TimePicker MinuteIncrement="2" Header="Wähle:" />

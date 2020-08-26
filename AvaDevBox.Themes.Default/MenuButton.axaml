@@ -85,4 +85,7 @@
   <Style Selector="adb|MenuButton:disabled">
     <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}"/>
   </Style>
+  <Style Selector="adb|MenuButton:popupbtnpressed  /template/ Border#PART_PopupBtn">
+    <Setter Property="Background" Value="{DynamicResource ThemeControlHighBrush}"/>
+  </Style>
 </Styles>

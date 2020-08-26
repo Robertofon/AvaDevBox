@@ -29,7 +29,19 @@ namespace AvaloniaControls.Demo
 
         protected void ClickEvent(object sender, RoutedEventArgs e)
         {
-            _items.Add("TestClick");
+            _items.Add("MainButton");
+        }
+
+        protected void ClickTest1(object sender, RoutedEventArgs e)
+        {
+            _items.Add("Test1");
+            e.Handled = true;
+        }
+
+        protected void ClickTest2(object sender, RoutedEventArgs e)
+        {
+            _items.Add("Test2");
+            e.Handled = true;
         }
 
         public class MenuDemoVm
