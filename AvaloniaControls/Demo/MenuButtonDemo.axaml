@@ -14,7 +14,6 @@
       </WrapPanel>
     </adb:MenuButton>
 
-
     <TextBlock>Test Time</TextBlock>
   </WrapPanel>
 </UserControl>

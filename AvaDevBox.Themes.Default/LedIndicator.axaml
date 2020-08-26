@@ -1,6 +1,7 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:adb="https://flinkebits.de/avadevbox"
+        xmlns:xam="clr-namespace:Avalonia.Markup.Xaml.Converters;assembly=Avalonia.Markup.Xaml"
         xmlns:sys="clr-namespace:System;assembly=mscorlib">
   <Design.PreviewWith>
     <Border Padding="20">
@@ -20,6 +21,9 @@
         <Border Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
+          <Border.Resources>
+            <xam:ColorToBrushConverter x:Key="c2bc"/>
+          </Border.Resources>
           <Viewbox Stretch="Fill">
             <Grid >
               <!-- metal frame -->
@@ -35,7 +39,7 @@
               </Ellipse>
 
               <!-- Main color part -->
-              <Ellipse Name="mainColor" Fill="{TemplateBinding OnColor}"
+              <Ellipse Name="mainColor" Fill="{TemplateBinding OnColor, Converter={StaticResource c2bc}}"
                        Width="80" Height="80"  Margin="10">
               </Ellipse>
               <Ellipse Width="80" Height="80" Margin="10" Opacity="0.6" StrokeThickness="0.5" Stroke="Black">

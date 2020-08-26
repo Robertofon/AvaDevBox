@@ -11,7 +11,7 @@ namespace AvaDevBox.Controls
 {
     public class LedButton : ToggleButton
     {
-        public static readonly StyledProperty<IBrush> OnColorProperty =
+        public static readonly StyledProperty<Color> OnColorProperty =
             LedIndicator.OnColorProperty.AddOwner<LedButton>();
 
         static LedButton()
@@ -19,7 +19,7 @@ namespace AvaDevBox.Controls
             FocusableProperty.OverrideDefaultValue(typeof(LedButton), true);
         }
 
-        public IBrush OnColor
+        public Color OnColor
         {
             get => GetValue(OnColorProperty);
             set => SetValue(OnColorProperty, value);

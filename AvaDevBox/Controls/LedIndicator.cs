@@ -8,7 +8,6 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Shapes;
 using Avalonia.Data;
 using Avalonia.Media;
-using Color = System.Drawing.Color;
 
 namespace AvaDevBox.Controls
 {
@@ -17,8 +16,8 @@ namespace AvaDevBox.Controls
         public static readonly DirectProperty<LedIndicator, bool?> IsCheckedProperty =
             ToggleButton.IsCheckedProperty.AddOwner<LedIndicator>(o => o.IsChecked, (o,v) => o.IsChecked = v);
 
-        public static readonly StyledProperty<IBrush> OnColorProperty =
-            AvaloniaProperty.Register<LedIndicator, IBrush>(nameof(OnColor), Brushes.Transparent, false, BindingMode.Default);
+        public static readonly StyledProperty<Color> OnColorProperty =
+            AvaloniaProperty.Register<LedIndicator, Color>(nameof(OnColor), Colors.Red, false, BindingMode.Default);
 
         private bool? _isChecked;
 
@@ -26,7 +25,6 @@ namespace AvaDevBox.Controls
         {
             UpdatePseudoClasses(IsChecked);
         }
-
 
         public bool? IsChecked
         {
@@ -37,7 +35,7 @@ namespace AvaDevBox.Controls
             }
         }
 
-        public IBrush OnColor
+        public Color OnColor
         {
             get => GetValue(OnColorProperty);
             set => SetValue(OnColorProperty, value);
@@ -49,6 +47,5 @@ namespace AvaDevBox.Controls
             PseudoClasses.Set(":unchecked", isChecked == false);
             PseudoClasses.Set(":indeterminate", isChecked == null);
         }
-
     }
 }
