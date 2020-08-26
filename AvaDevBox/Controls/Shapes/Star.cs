@@ -18,14 +18,14 @@ namespace AvaDevBox.Controls.Shapes
         public static readonly StyledProperty<double> InnerRadiusRatioProperty =
             AvaloniaProperty.Register<Star, double>(nameof(InnerRadiusRatio), 0.4, validate: ValidateInnerRadius);
 
-        private static int ValidateNumberOfSpikes(Star arg1, int val)
+        private static bool ValidateNumberOfSpikes(int i)
         {
-            return Math.Min(2047, Math.Max(1, val));
+            return i <= 2047 && i >= 1;
         }
 
-        private static double ValidateInnerRadius(Star arg1, double val)
+        private static bool ValidateInnerRadius(double d)
         {
-            return Math.Min(1.0, Math.Max(0, val));
+            return 0<=d && d<=1.0;
         }
 
         static Star()

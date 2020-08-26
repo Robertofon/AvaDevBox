@@ -38,9 +38,9 @@ namespace AvaDevBox.Controls
         }
 
 
-        protected override void OnTemplateApplied(TemplateAppliedEventArgs e)
+        protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
-            base.OnTemplateApplied(e);
+            base.OnApplyTemplate(e);
             _popupBtn = e.NameScope.Get<Control>("PART_PopupBtn");
             _popup = e.NameScope.Get<Popup>("PART_Popup");
         }

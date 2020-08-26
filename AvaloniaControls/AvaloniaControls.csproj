@@ -4,8 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.9.11" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
+    <PackageReference Include="Avalonia" Version="0.10.0-preview3" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.0-preview3" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0-preview3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AvaDevBox.Themes.Default\AvaDevBox.Themes.Default.csproj" />

@@ -22,18 +22,19 @@ namespace AvaDevBox.Controls
 
         private bool? _isChecked;
 
-        static LedIndicator()
+        public LedIndicator()
         {
-            PseudoClass<LedIndicator, bool?>(IsCheckedProperty, c => c == true, ":checked");
-            PseudoClass<LedIndicator, bool?>(IsCheckedProperty, c => c == false, ":unchecked");
-            PseudoClass<LedIndicator, bool?>(IsCheckedProperty, c => c == null, ":indeterminate");
+            UpdatePseudoClasses(IsChecked);
         }
 
 
         public bool? IsChecked
         {
             get { return _isChecked; }
-            set { SetAndRaise(IsCheckedProperty, ref _isChecked, value); }
+            set 
+            { 
+                SetAndRaise(IsCheckedProperty, ref _isChecked, value); UpdatePseudoClasses(value);
+            }
         }
 
         public IBrush OnColor
@@ -41,5 +42,13 @@ namespace AvaDevBox.Controls
             get => GetValue(OnColorProperty);
             set => SetValue(OnColorProperty, value);
         }
+
+        private void UpdatePseudoClasses(bool? isChecked)
+        {
+            PseudoClasses.Set(":checked", isChecked == true);
+            PseudoClasses.Set(":unchecked", isChecked == false);
+            PseudoClasses.Set(":indeterminate", isChecked == null);
+        }
+
     }
 }

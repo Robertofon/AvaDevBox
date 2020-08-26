@@ -14,25 +14,25 @@ namespace AvaDevBox.Controls.Shapes
     public class RulerShape : Shape
     {
         public static readonly StyledProperty<int> TickFreq1Property =
-            AvaloniaProperty.Register<Shape, int>(nameof(TickFreq1), 2, validate: ValidateTickFreq1);
+            AvaloniaProperty.Register<Shape, int>(nameof(TickFreq1), 2, coerce: CoerceTickFreq1);
 
         public static readonly StyledProperty<int> TickFreq2Property =
-            AvaloniaProperty.Register<Shape, int>(nameof(TickFreq2), 5, validate: ValidateTickFreq2);
+            AvaloniaProperty.Register<Shape, int>(nameof(TickFreq2), 5, coerce: CoerceTickFreq2);
 
         public static readonly StyledProperty<double> SmallTickDistProperty =
-            AvaloniaProperty.Register<Shape, double>(nameof(SmallTickDist), 0.4, validate: ValidateSmallTickDist);
+            AvaloniaProperty.Register<Shape, double>(nameof(SmallTickDist), 0.4, coerce: CoerceSmallTickDist);
 
-        private static double ValidateSmallTickDist(Shape arg1, double val)
+        private static double CoerceSmallTickDist(IAvaloniaObject avaloniaObject, double val)
         {
             return val.LimitToAtLeast(0.5);
         }
 
-        private static int ValidateTickFreq1(Shape arg1, int arg2)
+        private static int CoerceTickFreq1(IAvaloniaObject avaloniaObject, int arg2)
         {
             return arg2.LimitTo(1, 50);
         }
 
-        private static int ValidateTickFreq2(Shape arg1, int arg2)
+        private static int CoerceTickFreq2(IAvaloniaObject avaloniaObject, int arg2)
         {
             return arg2.LimitTo(1, 50);
         }

@@ -27,10 +27,10 @@ namespace AvaDevBox.Controls
     public class RatingControl : ContentControl, ITemplatedControl
     {
         public static readonly StyledProperty<int> NumberOfStarsProperty =
-            AvaloniaProperty.Register<RatingControl, int>(nameof(NumberOfStars), 6, validate: ValidateNumberOfStars);
+            AvaloniaProperty.Register<RatingControl, int>(nameof(NumberOfStars), 6, coerce: CoerceNumberOfStars);
 
         public static readonly StyledProperty<double> ValueProperty =
-            AvaloniaProperty.Register<RatingControl, double>(nameof(Value), 0, validate: ValidateValue);
+            AvaloniaProperty.Register<RatingControl, double>(nameof(Value), 0, coerce: CoerceValue);
 
         /// <summary>
         /// Defines the <see cref="StarItems"/> property.
@@ -50,12 +50,12 @@ namespace AvaDevBox.Controls
             AffectsMeasure<RatingControl>(NumberOfStarsProperty);
         }
 
-        private static int ValidateNumberOfStars(RatingControl arg1, int val)
+        private static int CoerceNumberOfStars(IAvaloniaObject avaloniaObject, int val)
         {
             return val.LimitTo(1, 100);
         }
 
-        private static double ValidateValue(RatingControl arg1, double val)
+        private static double CoerceValue(IAvaloniaObject avaloniaObject, double val)
         {
             return val.LimitTo(0.0, 1.0);
         }
@@ -120,9 +120,9 @@ namespace AvaDevBox.Controls
             rating.StarItems = ratingStarItems;
         }
 
-        protected override void OnTemplateApplied(TemplateAppliedEventArgs e)
+        protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
-            base.OnTemplateApplied(e);
+            base.OnApplyTemplate(e);
             _starsPresenter = e.NameScope.Get<ItemsPresenter>("PART_StarsPresenter");
             _starsPresenter.Tapped += OnStarsPresenter_Tapped;
             _starsPresenter.KeyDown += OnStarsPresenter_KeyDown;

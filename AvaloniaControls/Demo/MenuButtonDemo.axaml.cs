@@ -19,7 +19,7 @@ namespace AvaloniaControls.Demo
         }
 
 
-        private void ClickEvent(object sender, RoutedEventArgs e)
+        protected void ClickEvent(object sender, RoutedEventArgs e)
         {
 
         }
