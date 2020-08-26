@@ -6,6 +6,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 
 namespace AvaDevBox.Controls
@@ -26,6 +27,7 @@ namespace AvaDevBox.Controls
 
         private Control _popupBtn;
         private Popup _popup;
+        private Control _mainButton;
 
 
         /// <summary>
@@ -41,8 +43,25 @@ namespace AvaDevBox.Controls
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
         {
             base.OnApplyTemplate(e);
+            _mainButton = e.NameScope.Get<Control>("PART_ContentPresenter");
             _popupBtn = e.NameScope.Get<Control>("PART_PopupBtn");
             _popup = e.NameScope.Get<Popup>("PART_Popup");
+        }
+
+        /// <summary>
+        /// Invokes the <see cref="PopUpButtonClick"/> event.
+        /// </summary>
+        protected virtual void OnPopupBtnClick()
+        {
+                _popup.IsOpen = true;
+            //var e = new RoutedEventArgs(ClickEvent);
+            //RaiseEvent(e);
+
+            //if (!e.Handled && Command?.CanExecute(CommandParameter) == true)
+            //{
+            //    Command.Execute(CommandParameter);
+            //    e.Handled = true;
+            //}
         }
 
         /// <inheritdoc/>
@@ -51,9 +70,13 @@ namespace AvaDevBox.Controls
             if(_popupBtn.IsFocused)
             {
                 // popupmenu
-                _popup.IsOpen = true;
+                OnPopupBtnClick();
                 e.Handled = true;
                 return;
+            }
+            else if (_mainButton.IsFocused)
+            {
+
             }
 
             base.OnKeyUp(e);

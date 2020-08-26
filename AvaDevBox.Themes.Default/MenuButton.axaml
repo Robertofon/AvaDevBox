@@ -59,22 +59,23 @@
           <Popup Name="PART_Popup"
                  MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
                  PlacementTarget="{TemplateBinding}"
-                 PlacementMode="Bottom">
+                 PlacementMode="Bottom" PlacementGravity="BottomLeft"
+                 IsLightDismissEnabled="True">
             <Border BorderBrush="{DynamicResource ThemeBorderMidBrush}" BorderThickness="1">
-              <Ellipse Width="33" Height="33"/>
+              <ContentPresenter Content="{TemplateBinding DropDownMenu}"/>
             </Border>
           </Popup>
         </Grid>
       </ControlTemplate>
     </Setter>
   </Style>
-  <Style Selector="Button:pointerover /template/ ContentPresenter">
+  <Style Selector="adb|MenuButton:pointerover /template/ ContentPresenter">
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
   </Style>
-  <Style Selector="Button:pressed  /template/ ContentPresenter">
+  <Style Selector="adb|MenuButton:pressed  /template/ ContentPresenter">
     <Setter Property="Background" Value="{DynamicResource ThemeControlHighBrush}"/>
   </Style>
-  <Style Selector="Button:disabled">
+  <Style Selector="adb|MenuButton:disabled">
     <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}"/>
   </Style>
 </Styles>
