@@ -8,16 +8,12 @@
   <WrapPanel Orientation="Vertical">
     <TextBlock>The menu button Clickmode=Release:</TextBlock>
     <adb:MenuButton ClickMode="Release" Click="ClickEvent">
-      <adb:MenuButton.DropDownMenu>
-        <ContextMenu>
-          <MenuItem Header="Menü1"/>
-          <MenuItem Header="Menü2"/>
-          <Separator />
-          <MenuItem Header="Menü3" IsSelected="True">
-            <MenuItem Header="Submenü1"/>
-          </MenuItem>
-        </ContextMenu>
-      </adb:MenuButton.DropDownMenu>
+      <adb:MenuButton.PopupContent>
+        <Grid ColumnDefinitions="Auto,Auto">
+          <Ellipse Width="33" Height="22" Grid.Column="0" Fill="AliceBlue"/>
+          <TextBlock Grid.Column="1">Textt</TextBlock>
+        </Grid>
+      </adb:MenuButton.PopupContent>
       <WrapPanel>
         <TextBlock>Text</TextBlock>
         <Ellipse Width="30" Height="22" Fill="Red" Stroke="Blue" StrokeThickness="3"/>
@@ -25,17 +21,24 @@
     </adb:MenuButton>
 
     <TextBlock>The menu button Clickmode=Press:</TextBlock>
-    <adb:MenuButton ClickMode="Press" Click="ClickEvent">
-      <adb:MenuButton.DropDownMenu>
-        <ContextMenu>
+    <adb:MenuButton ClickMode="Press" Click="ClickEvent" PopupContent="1">
+      <adb:MenuButton.PopupContentTemplate>
+        <DataTemplate>
+          <Grid ColumnDefinitions="Auto,Auto, Auto">
+            <Rectangle Width="33" Height="22" Grid.Column="0" Fill="Cornsilk"/>
+            <TextBlock Grid.Column="1">Texttemplate</TextBlock>
+            <Button Content="Blub" Grid.Column="2"/>
+          </Grid>
+        </DataTemplate>
+        <!--<ContextMenu>
           <MenuItem Header="Menü1"/>
           <MenuItem Header="Menü2"/>
           <Separator />
           <MenuItem Header="Menü3" IsSelected="True">
             <MenuItem Header="Submenü1"/>
           </MenuItem>
-        </ContextMenu>
-      </adb:MenuButton.DropDownMenu>
+        </ContextMenu>-->
+      </adb:MenuButton.PopupContentTemplate>
       <WrapPanel>
         <TextBlock>Text</TextBlock>
         <Ellipse Width="30" Height="22" Fill="Red" Stroke="Blue" StrokeThickness="3"/>
