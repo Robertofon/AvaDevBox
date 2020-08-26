@@ -55,6 +55,15 @@
                   VerticalAlignment="Center"
                   Data="M0,0 L3,0 4.5,1.5 6,0 9,0 4.5,4.5 z"/>
           </Border>
+
+          <Popup Name="PART_Popup"
+                 MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                 PlacementTarget="{TemplateBinding}"
+                 PlacementMode="Bottom">
+            <Border BorderBrush="{DynamicResource ThemeBorderMidBrush}" BorderThickness="1">
+              <Ellipse Width="33" Height="33"/>
+            </Border>
+          </Popup>
         </Grid>
       </ControlTemplate>
     </Setter>

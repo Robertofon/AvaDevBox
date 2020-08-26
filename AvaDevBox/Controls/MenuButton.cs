@@ -25,6 +25,7 @@ namespace AvaDevBox.Controls
             AvaloniaProperty.Register<Control, ContextMenu>(nameof(DropDownMenu));
 
         private Control _popupBtn;
+        private Popup _popup;
 
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace AvaDevBox.Controls
         {
             base.OnTemplateApplied(e);
             _popupBtn = e.NameScope.Get<Control>("PART_PopupBtn");
+            _popup = e.NameScope.Get<Popup>("PART_Popup");
         }
 
         /// <inheritdoc/>
@@ -49,6 +51,7 @@ namespace AvaDevBox.Controls
             if(_popupBtn.IsFocused)
             {
                 // popupmenu
+                _popup.IsOpen = true;
                 e.Handled = true;
                 return;
             }
@@ -63,6 +66,10 @@ namespace AvaDevBox.Controls
             bool hitPopupBtn = visualsAt.Any(v => _popupBtn == v || _popupBtn.IsVisualAncestorOf(v));
             if (hitPopupBtn)
             {
+                if (this.ClickMode == ClickMode.Press)
+                {
+                    _popup.IsOpen = true;
+                }
                 e.Handled = true;
                 return;
             }
@@ -77,6 +84,10 @@ namespace AvaDevBox.Controls
             bool hitPopupBtn = visualsAt.Any(v => _popupBtn == v || _popupBtn.IsVisualAncestorOf(v));
             if (hitPopupBtn)
             {
+                if (ClickMode == ClickMode.Release)
+                {
+                    _popup.IsOpen = true;
+                }
                 e.Handled = true;
                 return;
             }
