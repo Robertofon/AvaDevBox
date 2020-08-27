@@ -4,6 +4,8 @@ Controls for AvaloniaUI developers
 This just emerging as a brilliant collection of lookless AvaloniaUI controls
 to be used in GUI applications. 
 
+## License
+See [License.md](License.md).
 ## Design goals
 
 Goals are:
