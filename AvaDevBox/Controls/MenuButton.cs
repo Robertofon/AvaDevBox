@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml.Templates;
 using Avalonia.Metadata;
-using Avalonia.VisualTree;
+using System;
 
 namespace AvaDevBox.Controls
 {
     /// <summary>
     /// Implementation of a Menu button. This is basically an ordinary button with all
-    /// its capabilities plus a small button aside that expands the to be ........
-    /// which will then be displayed and its items
-    /// can then issue alternate commands.
+    /// its capabilities plus a side button (like a drop down) and
+    /// content/content template which displays in a popup if the side button is pressed.
+    ///
+    /// TOD if redesign
     /// </summary>
     public class MenuButton : Button
     {

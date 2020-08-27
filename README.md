@@ -24,3 +24,9 @@ Goals are:
 * LedIndicator
 * LedButton
 * RangeSlider
+
+![](img/MenuButton.png)
+![](img/LedButton.png)
+![](img/RatingControl.png)
+![](img/RulerShape.png)
+![](img/StarShape.png)
