@@ -1,0 +1,32 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:adb="https://flinkebits.de/avadevbox"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaControls.Demo.SliderDemo">
+  <StackPanel>
+    <TextBlock> Avalonia Slider:</TextBlock>
+    <WrapPanel>
+      <TextBlock>IsPointerOver:</TextBlock><adb:LedIndicator Height="19" Width="19" IsChecked="{Binding #S1.IsPointerOver, Mode=OneWay}"/>
+    </WrapPanel>
+    <CheckBox IsChecked="True" Name="CSn" Content="IsSnapToTickEnabled"/>
+    <TextBlock>Slider:</TextBlock>
+    <TextBlock>TickFrequency:</TextBlock><TextBox Text="{Binding #S1.TickFrequency}" Width="30"/>
+    <TextBlock>Value:</TextBlock><TextBox Text="{Binding #S1.Value}" Width="30"/>
+    <ContentPresenter Content="{Binding #S1.Ticks}"/>
+    <Slider Name="S1"
+            Orientation="Horizontal"
+            TickFrequency="1.5"
+            Minimum="3"
+            Maximum="20" 
+            TickPlacement="BottomRight"
+            Value="4"
+            SmallChange="1"
+            LargeChange="5"
+            IsSnapToTickEnabled="{Binding #CSn.IsChecked, Mode=OneWay}"
+            Padding="3" 
+            BorderBrush="Cyan" BorderThickness="1"
+            />
+  </StackPanel>
+</UserControl>

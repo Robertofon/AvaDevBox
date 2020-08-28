@@ -12,4 +12,9 @@
     <ProjectReference Include="..\AvaDevBox.Themes.Default\AvaDevBox.Themes.Default.csproj" />
     <ProjectReference Include="..\AvaDevBox\AvaDevBox.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Demo\SliderDemo.axaml.cs">
+      <DependentUpon>SliderDemo.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
