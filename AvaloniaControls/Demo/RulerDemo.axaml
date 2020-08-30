@@ -3,8 +3,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:adb="https://flinkebits.de/avadevbox"
+             xmlns:sys="clr-namespace:System"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaControls.Demo.RulerDemo">
+  <UserControl.Resources>
+    <!--<ObjectDataProvider x:Key="odp" MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}">
+      <ObjectDataProvider.MethodParameters>
+        <x:Type TypeName="adb:ConnectionLinePlacement"/>
+      </ObjectDataProvider.MethodParameters>
+    </ObjectDataProvider>-->
+  </UserControl.Resources>
   <StackPanel Name="Sp">
     <TextBlock>Der Ruler</TextBlock>
     <StackPanel Orientation="Horizontal">
@@ -30,8 +39,12 @@
       </StackPanel>
       <TextBlock Text="{Binding #TickFS2.Value}" Width="20"/>
     </StackPanel>
+    <ComboBox Name="ConnLine" Width="140"
+              SelectedIndex="1"
+              Items="{Binding Source={adb:EnumBindingSource {x:Type adb:ConnectionLinePlacement}}}"/>
     <Border Background="AntiqueWhite">
       <adb:RulerShape Width="400" Height="30"  Stroke="DarkBlue"
+                      ConnectionLine="{Binding #ConnLine.SelectedItem, Mode=OneWay}"
                       TickFreq1="{Binding #TickFS1.Value}" TickFreq2="{Binding #TickFS2.Value}"
                       StrokeThickness="{Binding #StrokeTh.Value}" SmallTickDist="{Binding #TickSl.Value}"/>
     </Border>
