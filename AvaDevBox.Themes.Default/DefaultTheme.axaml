@@ -5,4 +5,5 @@
   <!-- LedButton uses LedIndicator so must be later    -->
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/LedButton.axaml"/>
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/MenuButton.axaml"/>
+  <StyleInclude Source="avares://AvaDevBox.Themes.Default/WheelSlider.axaml"/>
 </Styles>

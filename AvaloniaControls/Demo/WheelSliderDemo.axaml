@@ -1,0 +1,29 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:adb="https://flinkebits.de/avadevbox"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaControls.Demo.WheelSliderDemo">
+  <StackPanel>
+    <TextBlock FontSize="16">Wheel slider</TextBlock>
+    <TextBlock >The wheel slider is aimed to be a rotation wheel
+inset into the screen and either wrapping the value of it's range
+around or quiting operation on both ends.</TextBlock>
+
+    <CheckBox IsChecked="True" IsThreeState="False" Content="Wrap around enabled:"
+              Name="Wrap"/>
+    <adb:WheelSlider IsWraparoundEnabled="{Binding #Wrap.IsChecked}"
+                     Width="400" Height="33"
+                     Minimum="-44" Maximum="123" Value="4"
+                     Orientation="Horizontal"
+                     Name="w1"
+                />
+    <TextBlock>Current Value:</TextBlock>
+    <Border BorderBrush="Black" BorderThickness="1"  HorizontalAlignment="Left">
+    <TextBlock Text="{Binding #w1.Value}" Width="33"/>
+    </Border>
+  </StackPanel>
+  
+  
+</UserControl>

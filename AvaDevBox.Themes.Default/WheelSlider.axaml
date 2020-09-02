@@ -1,0 +1,39 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:adb="https://flinkebits.de/avadevbox">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <adb:WheelSlider Width="150" Height="50" Orientation="Horizontal"
+                       Minimum="5" Maximum="222" Value="4"/>
+    </Border>
+  </Design.PreviewWith>
+  <Style Selector="adb|WheelSlider">
+
+    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+    <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
+    <!--<Setter Property="Stroke" Value="{DynamicResource ThemeBorderHighBrush}"/>-->
+    <!--<Setter Property="StrokeThickness" Value="0.5"/>-->
+    <Setter Property="Padding" Value="4"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="AliceBlue"
+                Focusable="True"
+                BorderBrush="Black"
+                BorderThickness="1">
+          <adb:RulerShape Orientation="{TemplateBinding Orientation}"
+                          TickFreq1="1"
+                          TickFreq2="1"
+                           Width="{TemplateBinding Width}"
+                           Height="{TemplateBinding Height}"
+                           Stroke="{TemplateBinding BorderBrush}"
+                           StrokeThickness="0.5"
+                          SmallTickDist="4"
+                          ConnectionLine="None"/>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+</Styles>

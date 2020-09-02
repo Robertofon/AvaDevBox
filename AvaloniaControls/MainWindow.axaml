@@ -11,6 +11,10 @@
         x:Class="AvaloniaControls.MainWindow"
         Title="AvaloniaControls">
   <TabControl TabStripPlacement="Top">
+    <TabItem Header="WheelSliders" >
+      <demo:WheelSliderDemo/>
+    </TabItem>
+
     <TabItem Header="Sliders" >
       <demo:SliderDemo/>
     </TabItem>

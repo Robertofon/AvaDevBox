@@ -20,13 +20,25 @@ namespace AvaDevBox.Controls
         public static readonly StyledProperty<Orientation> OrientationProperty =
             ScrollBar.OrientationProperty.AddOwner<WheelSlider>();
 
+        /// <summary>
+        /// Defines the <see cref="IsWraparoundEnabled"/> property.
+        /// </summary>
+        public static readonly StyledProperty<bool> IsWraparoundEnabledProperty =
+            AvaloniaProperty.Register<WheelSlider, bool>(nameof(IsWraparoundEnabled), false, false);
+
+
+        static WheelSlider()
+        {
+            AffectsRender<WheelSlider>(IsWraparoundEnabledProperty);
+        }
+
         public WheelSlider()
         {
             UpdatePseudoClasses(Orientation);
         }
 
         /// <summary>
-        /// Gets or sets the orientation of a <see cref="Slider"/>.
+        /// Gets or sets the orientation of a <see cref="WheelSlider"/>.
         /// </summary>
         public Orientation Orientation
         {
@@ -34,6 +46,15 @@ namespace AvaDevBox.Controls
             set { SetValue(OrientationProperty, value); }
         }
 
+        /// <summary>
+        /// Gets or sets the value if the <see cref="WheelSlider"/> stops (<c>false</c>)
+        /// at the end of the value range or whether it wraps around (<c>true</c>).
+        /// </summary>
+        public bool IsWraparoundEnabled
+        {
+            get { return GetValue(IsWraparoundEnabledProperty); }
+            set { SetValue(IsWraparoundEnabledProperty, value); }
+        }
 
         protected override void OnPropertyChanged<T>(AvaloniaPropertyChangedEventArgs<T> change)
         {
