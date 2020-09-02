@@ -15,7 +15,8 @@
     </ObjectDataProvider>-->
   </UserControl.Resources>
   <StackPanel Name="Sp">
-    <TextBlock>Der Ruler</TextBlock>
+    <TextBlock>The RulerShape</TextBlock>
+    <TextBlock>This can be used for rulers or as primitives to compose controls.</TextBlock>
     <StackPanel Orientation="Horizontal">
       <StackPanel Width="200">
         <TextBlock>SmallDist</TextBlock>
@@ -30,23 +31,31 @@
     <StackPanel Orientation="Horizontal">
       <StackPanel Width="200">
         <TextBlock>TickFreq1</TextBlock>
-        <Slider Name="TickFS1" Orientation="Horizontal" Minimum="1" Maximum="50" SmallChange="1" Value="2" IsSnapToTickEnabled="True"/>
+        <Slider Name="TickFS1" Orientation="Horizontal" Minimum="1" Maximum="50" SmallChange="1" Value="2" IsSnapToTickEnabled="False"/>
       </StackPanel>
       <TextBlock Text="{Binding #TickFS1.Value}" Width="20"/>
       <StackPanel Width="200">
         <TextBlock>TickFreq2</TextBlock>
-        <Slider Name="TickFS2" Orientation="Horizontal" Minimum="1" Maximum="50" SmallChange="1" Value="5" IsSnapToTickEnabled="True" />
+        <Slider Name="TickFS2" Orientation="Horizontal" Minimum="1" Maximum="50" SmallChange="1" Value="5" IsSnapToTickEnabled="False" LargeChange="10" />
       </StackPanel>
       <TextBlock Text="{Binding #TickFS2.Value}" Width="20"/>
     </StackPanel>
+    <TextBlock>ConnectionLine:</TextBlock>
     <ComboBox Name="ConnLine" Width="140"
-              SelectedIndex="1"
+              HorizontalAlignment="Left"
+              SelectedIndex="1" Margin="10,5,0,30"
               Items="{Binding Source={adb:EnumBindingSource {x:Type adb:ConnectionLinePlacement}}}"/>
-    <Border Background="AntiqueWhite">
       <adb:RulerShape Width="400" Height="30"  Stroke="DarkBlue"
                       ConnectionLine="{Binding #ConnLine.SelectedItem, Mode=OneWay}"
                       TickFreq1="{Binding #TickFS1.Value}" TickFreq2="{Binding #TickFS2.Value}"
+                      Orientation="Horizontal"
+                      HorizontalAlignment="Left" Margin="30,0,0,0"
                       StrokeThickness="{Binding #StrokeTh.Value}" SmallTickDist="{Binding #TickSl.Value}"/>
-    </Border>
+      <adb:RulerShape Width="30" Height="330"  Stroke="DarkBlue"
+                      ConnectionLine="{Binding #ConnLine.SelectedItem, Mode=OneWay}"
+                      TickFreq1="{Binding #TickFS1.Value}" TickFreq2="{Binding #TickFS2.Value}"
+                      HorizontalAlignment="Left" Margin="0,0,0,0"
+                      Orientation="Vertical"
+                      StrokeThickness="{Binding #StrokeTh.Value}" SmallTickDist="{Binding #TickSl.Value}"/>
   </StackPanel>
 </UserControl>
