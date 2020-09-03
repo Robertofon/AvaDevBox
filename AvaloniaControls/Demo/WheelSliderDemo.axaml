@@ -17,12 +17,21 @@ around or quiting operation on both ends.</TextBlock>
                      Width="400" Height="33"
                      Minimum="-44" Maximum="123" Value="4"
                      Orientation="Horizontal"
+                     SpeedUpFactor="{Binding #w2.Value, Mode=OneWay}"
                      Name="w1"
                 />
     <TextBlock>Current Value:</TextBlock>
     <Border BorderBrush="Black" BorderThickness="1"  HorizontalAlignment="Left">
     <TextBlock Text="{Binding #w1.Value}" Width="33"/>
     </Border>
+    <TextBlock  HorizontalAlignment="Center">Speed up factor:</TextBlock>
+    <adb:WheelSlider IsWraparoundEnabled="False"
+                     Width="20" Height="133"
+                     Minimum="0.01" Maximum="100" Value="1"
+                     Orientation="Vertical"
+                     Name="w2"
+                />
+    <TextBox Text="{Binding #w2.Value, Mode=TwoWay}" Width="33"/>
   </StackPanel>
   
   

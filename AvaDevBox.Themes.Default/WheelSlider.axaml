@@ -3,35 +3,53 @@
         xmlns:adb="https://flinkebits.de/avadevbox">
   <Design.PreviewWith>
     <Border Padding="20">
-      <adb:WheelSlider Width="150" Height="50" Orientation="Horizontal"
+      <adb:WheelSlider Width="250" Height="50" Orientation="Horizontal"
+                       
                        Minimum="5" Maximum="222" Value="4"/>
     </Border>
   </Design.PreviewWith>
   <Style Selector="adb|WheelSlider">
+    <Style.Resources>
+      <Color x:Key="WheelDarkPart" >#222222</Color>
+      <Color x:Key="WheelMidPart" >#999999</Color>
+      <Color x:Key="WheelLightPart" >#EEEEEE</Color>
 
-    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+      <LinearGradientBrush x:Key="WheelBackground" SpreadMethod="Pad" StartPoint="0,0" EndPoint="100%,0%">
+        <LinearGradientBrush.GradientStops>
+          <GradientStop Color="{DynamicResource WheelDarkPart}" Offset="0.0"/>
+          <GradientStop Color="{DynamicResource WheelMidPart}" Offset="0.15"/>
+          <GradientStop Color="{DynamicResource WheelLightPart}" Offset="0.5"/>
+          <GradientStop Color="{DynamicResource WheelMidPart}" Offset="0.85"/>
+          <GradientStop Color="{DynamicResource WheelDarkPart}" Offset="1.0"/>
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+    </Style.Resources>
+    
+    <Setter Property="Background" Value="{DynamicResource WheelBackground}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
-    <!--<Setter Property="Stroke" Value="{DynamicResource ThemeBorderHighBrush}"/>-->
-    <!--<Setter Property="StrokeThickness" Value="0.5"/>-->
     <Setter Property="Padding" Value="4"/>
 
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="AliceBlue"
+        <Grid >
+          <Border Name="PART_WheelArea"
+            Background="{TemplateBinding Background}"
                 Focusable="True"
-                BorderBrush="Black"
-                BorderThickness="1">
-          <adb:RulerShape Orientation="{TemplateBinding Orientation}"
+                Width="{TemplateBinding Width}"
+                Height="{TemplateBinding Height}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+             <adb:RulerShape Orientation="{TemplateBinding Orientation}"
                           TickFreq1="1"
                           TickFreq2="1"
-                           Width="{TemplateBinding Width}"
-                           Height="{TemplateBinding Height}"
                            Stroke="{TemplateBinding BorderBrush}"
                            StrokeThickness="0.5"
                           SmallTickDist="4"
                           ConnectionLine="None"/>
         </Border>
+
+        </Grid>
       </ControlTemplate>
     </Setter>
   </Style>
