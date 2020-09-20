@@ -100,23 +100,29 @@ namespace AvaDevBox.Controls
         }
         private void WheelReleased(object sender, PointerReleasedEventArgs e)
         {
+            HandleMovement(e.GetPosition(this), e.Pointer);
+            
+            PseudoClasses.Remove(":pressed");
+            PseudoClasses.Remove(":dragging");
+            _lastPoint = null;
+        }
+
+        private void HandleMovement(Point pt, IPointer mouse)
+        {
             if (_lastPoint.HasValue)
             {
-                var currPoint = e.GetPosition(this);
-                Vector dist = currPoint - _lastPoint.Value;
-                double move = this.Orientation == Orientation.Horizontal ? dist.X : dist.Y;
-                double newVal = Value + move * 0.01 * SpeedUpFactor;
+                Vector dist = pt - _lastPoint.Value;
+                double move = this.Orientation == Orientation.Horizontal ? dist.X : -dist.Y;
+                
+                double newVal = Value + move * 0.1 * SpeedUpFactor;
                 if (IsWraparoundEnabled)
                 {
                     newVal = (newVal - Minimum) % (Maximum - Minimum) + Minimum;
                 }
 
                 Value = newVal;
+                _lastPoint = pt;
             }
-
-            PseudoClasses.Remove(":pressed");
-            PseudoClasses.Remove(":dragging");
-            _lastPoint = null;
         }
 
         private void WheelMoved(object sender, PointerEventArgs e)
@@ -124,17 +130,9 @@ namespace AvaDevBox.Controls
             if (_lastPoint.HasValue)
             {
                 PseudoClasses.Add(":dragging");
-                var currPoint = e.GetPosition(this);
-                Vector dist = currPoint - _lastPoint.Value;
-                double move = this.Orientation == Orientation.Horizontal ? dist.X : dist.Y;
-                double newVal = Value + move * 0.01 * SpeedUpFactor;
-                if (IsWraparoundEnabled)
-                {
-                    newVal = (newVal - Minimum) % (Maximum - Minimum) + Minimum;
-                }
-
-                Value = newVal;
             }
+
+            HandleMovement(e.GetPosition(this), e.Pointer);
         }
 
 

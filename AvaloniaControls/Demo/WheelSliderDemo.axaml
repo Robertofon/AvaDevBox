@@ -11,18 +11,23 @@
 inset into the screen and either wrapping the value of it's range
 around or quiting operation on both ends.</TextBlock>
 
+    <TextBlock>Orientation:</TextBlock>
+    <ComboBox Name="ori" Width="140"
+              HorizontalAlignment="Left"
+              SelectedIndex="0" Margin="10,5,0,30"
+              Items="{Binding Source={adb:EnumBindingSource {x:Type Orientation}}}"/>
     <CheckBox IsChecked="True" IsThreeState="False" Content="Wrap around enabled:"
               Name="Wrap"/>
     <adb:WheelSlider IsWraparoundEnabled="{Binding #Wrap.IsChecked}"
-                     Width="400" Height="33"
+                     Width="200" Height="43"
                      Minimum="-44" Maximum="123" Value="4"
-                     Orientation="Horizontal"
+                     Orientation="{Binding #ori.SelectedItem}"
                      SpeedUpFactor="{Binding #w2.Value, Mode=OneWay}"
                      Name="w1"
                 />
     <TextBlock>Current Value:</TextBlock>
     <Border BorderBrush="Black" BorderThickness="1"  HorizontalAlignment="Left">
-    <TextBlock Text="{Binding #w1.Value}" Width="33"/>
+      <TextBlock Text="{Binding #w1.Value}" Width="53"/>
     </Border>
     <TextBlock  HorizontalAlignment="Center">Speed up factor:</TextBlock>
     <adb:WheelSlider IsWraparoundEnabled="False"
@@ -32,7 +37,7 @@ around or quiting operation on both ends.</TextBlock>
                      Name="w2"
                 />
     <TextBox Text="{Binding #w2.Value, Mode=TwoWay}" Width="33"/>
+    
+    
   </StackPanel>
-  
-  
 </UserControl>
