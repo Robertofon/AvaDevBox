@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Avalonia;
 using Avalonia.Controls;
@@ -44,7 +45,7 @@ namespace AvaDevBox.MarkupExtensions
             this.EnumType = enumType;
         }
 
-        public  Array ProvideValue(IServiceProvider serviceProvider)
+        public Array ProvideValue(IServiceProvider serviceProvider)
         {
             if (null == this._enumType)
                 throw new InvalidOperationException("The EnumType must be specified.");
