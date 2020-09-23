@@ -1,0 +1,36 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:adb="https://flinkebits.de/avadevbox"
+             xmlns:local="clr-namespace:AvaloniaControls.Demo;assembly=AvaloniaControls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaControls.Demo.PanelDemo">
+  <UserControl.Resources>
+    <local:Zero2NanConverter x:Key="conf"/>
+  </UserControl.Resources>
+  <Grid RowDefinitions="Auto,*">
+    <Grid Grid.Row="0">
+      <WrapPanel>
+        <TextBlock>Orientation:</TextBlock>
+        <ComboBox Name="ori" Width="100"
+          HorizontalAlignment="Left"
+          SelectedIndex="0" Margin="10,5,0,30"
+          Items="{Binding Source={adb:EnumBindingSource {x:Type Orientation}}}"/>
+        <TextBlock>ItemWidth:</TextBlock>
+        <TextBlock Text="{Binding #panel.ItemWidth}" Width="33"></TextBlock>
+        <Slider Name="iw" Orientation="Horizontal" Minimum="0" Maximum="250" SmallChange="1" Value="100" IsSnapToTickEnabled="False" LargeChange="10" Width="111" />
+        <TextBlock>ItemHeight:</TextBlock>
+        <TextBlock Text="{Binding #panel.ItemHeight}" Width="33"></TextBlock>
+        <Slider Name="ih" Orientation="Horizontal" Minimum="0" Maximum="250" SmallChange="1" Value="50" IsSnapToTickEnabled="False" LargeChange="10" Width="111"  />
+      </WrapPanel>
+    </Grid>
+    <adb:EqualSpreadWrapPanel Grid.Row="1" Name="panel"
+                             ItemWidth="{Binding ElementName=iw, Path=Value, Converter={StaticResource conf}}"
+                             ItemHeight="{Binding #ih.Value, Converter={StaticResource conf}}"
+                             Orientation="{Binding #ori.SelectedItem}">
+      
+      
+    </adb:EqualSpreadWrapPanel>
+  </Grid>
+</UserControl>
