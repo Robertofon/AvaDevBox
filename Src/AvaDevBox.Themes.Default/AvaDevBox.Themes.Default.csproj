@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Flinkebits.AvaDevBox.Themes.Default</PackageId>
+    <Authors>Robert Köpferl</Authors>
+    <Company>Flinkebits GmbH</Company>
+    <Description>A collection of useful and easy to use controls and panels for AvaloniaUI gui framework.
+Theme</Description>
+    <Copyright>Flinkebits GmbH 2020</Copyright>
+    <PackageProjectUrl>https://github.com/flinkebits/AvaDevBox</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageTags>AvaloniaUI Controls Flinkebits Themes</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +20,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AvaDevBox\AvaDevBox.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
