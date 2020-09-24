@@ -43,3 +43,28 @@ No releases yet. Planned.
 ![](img/RatingControl.png)
 ![](img/RulerShape.png)
 ![](img/StarShape.png)
+
+# We do even have some newer Panels included:
+
+* EquiSpreadWrapPanel
+
+![](img/EquiSpreadPanel.png)
+This is primarily a wrap panel WrapPanel that holds an arbitrary number
+of childs. The difference to WrapPanel is that it spreads its childs to the whole width
+(if orientation is Horizontal) or height respectively. That for every line individually.
+This happens if ItemWidth or ItemHeight are set to double.NaN.
+If you set an  ItemWidth or ItemHeight, though, all items will have that
+height/width applied. Since items are still spread equally about the space (but in the last line),
+this is the right panel to use, if you want to make a gallery like listing.
+
+# And of course some utilities
+
+like 
+
+* DockEnum 
+    This allows to use enums in XAML as a markup extension:
+
+    ![](img/DockEnum.png)
+
+    Seealso: ![Roblog](https://log.koepferl.de/2020/09/20/mit-avaloniaui-enums-in-xaml-zeigen/)
+
