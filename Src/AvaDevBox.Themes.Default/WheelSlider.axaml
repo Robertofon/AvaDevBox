@@ -8,13 +8,14 @@
                        Minimum="5" Maximum="222" Value="4"/>
     </Border>
   </Design.PreviewWith>
-  <Style Selector="adb|WheelSlider">
-    <Style.Resources>
+  <Styles.Resources>
       <Color x:Key="WheelDarkPart" >#222222</Color>
       <Color x:Key="WheelMidPart" >#999999</Color>
       <Color x:Key="WheelLightPart" >#EEEEEE</Color>
-
-      <LinearGradientBrush x:Key="WheelBackground" SpreadMethod="Pad" StartPoint="0,0" EndPoint="100%,0%">
+  </Styles.Resources>
+  <Style Selector="adb|WheelSlider">
+    <Style.Resources>
+      <LinearGradientBrush x:Key="WheelBackgroundH" SpreadMethod="Pad" StartPoint="0,0" EndPoint="100%,0%">
         <LinearGradientBrush.GradientStops>
           <GradientStop Color="{DynamicResource WheelDarkPart}" Offset="0.0"/>
           <GradientStop Color="{DynamicResource WheelMidPart}" Offset="0.15"/>
@@ -24,8 +25,8 @@
         </LinearGradientBrush.GradientStops>
       </LinearGradientBrush>
     </Style.Resources>
-    
-    <Setter Property="Background" Value="{DynamicResource WheelBackground}"/>
+
+    <Setter Property="Background" Value="{DynamicResource WheelBackgroundH}"/>
     <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
     <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
     <Setter Property="Padding" Value="4"/>
@@ -40,18 +41,34 @@
                 Height="{TemplateBinding Height}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}">
-             <adb:RulerShape Orientation="{TemplateBinding Orientation}"
-                          TickFreq1="1"
-                          TickFreq2="1"
-                           Stroke="{TemplateBinding BorderBrush}"
-                           StrokeThickness="0.5"
-                          SmallTickDist="4"
-                          ConnectionLine="None"/>
-        </Border>
+            <adb:RulerShape Name="PART_Gripper"
+                         Orientation="{TemplateBinding Orientation}"
+                         TickFreq1="1"
+                         TickFreq2="1"
+                          Stroke="{TemplateBinding BorderBrush}"
+                          StrokeThickness="0.5"
+                         SmallTickDist="4"
+                         ConnectionLine="None"/>
+          </Border>
 
         </Grid>
       </ControlTemplate>
     </Setter>
+  </Style>
+  <Style Selector="adb|WheelSlider:vertical">
+    <Style.Resources>
+      <LinearGradientBrush x:Key="WheelBackgroundV" SpreadMethod="Pad" StartPoint="0,0" EndPoint="0%,100%">
+        <LinearGradientBrush.GradientStops>
+          <GradientStop Color="{DynamicResource WheelDarkPart}" Offset="0.0"/>
+          <GradientStop Color="{DynamicResource WheelMidPart}" Offset="0.15"/>
+          <GradientStop Color="{DynamicResource WheelLightPart}" Offset="0.5"/>
+          <GradientStop Color="{DynamicResource WheelMidPart}" Offset="0.85"/>
+          <GradientStop Color="{DynamicResource WheelDarkPart}" Offset="1.0"/>
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+    </Style.Resources>
+
+    <Setter Property="Background" Value="{DynamicResource WheelBackgroundV}"/>
   </Style>
 
 </Styles>

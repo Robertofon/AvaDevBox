@@ -16,7 +16,7 @@ around or quiting operation on both ends.</TextBlock>
               HorizontalAlignment="Left"
               SelectedIndex="0" Margin="10,5,0,30"
               Items="{Binding Source={adb:EnumBindingSource {x:Type Orientation}}}"/>
-    <CheckBox IsChecked="True" IsThreeState="False" Content="Wrap around enabled:"
+    <CheckBox IsChecked="False" IsThreeState="False" Content="Enable wrap around:"
               Name="Wrap"/>
     <adb:WheelSlider IsWraparoundEnabled="{Binding #Wrap.IsChecked}"
                      Width="200" Height="43"

@@ -37,12 +37,21 @@ No releases yet. Planned.
 * LedIndicator
 * LedButton
 * RangeSlider
+* WheelSlider
 
+### Detail:
+
+* MenuButton is a control that allows a popout with additional Controls. 
 ![](img/MenuButton.png)
 ![](img/LedButton.png)
 ![](img/RatingControl.png)
 ![](img/RulerShape.png)
 ![](img/StarShape.png)
+
+* WheelSlider: This is a kind of slider. In fact it looks like a wheel inset into
+  the surface. The user can just move the wheel and thus change the value.
+  It supports wrap around and a speed up factor.
+![](img/WheelSlider.png)
 
 # We do even have some newer Panels included:
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AvaDevBox.Controls.Shapes;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -11,7 +12,7 @@ using Avalonia.Layout;
 namespace AvaDevBox.Controls
 {
     /// <summary>
-    /// A control almost like a slider. Continously scroll a wheel horinzontal or vertical.
+    /// A control almost like a slider. Continously scroll a wheel horizontal or vertical.
     /// The visual shall be a wheel reaching into the screen.
     /// </summary>
     public class WheelSlider : RangeBase
@@ -39,6 +40,7 @@ namespace AvaDevBox.Controls
         private IDisposable _wheelReleasedDispose;
         private IDisposable _wheelMovedDispose;
         private Point? _lastPoint;
+        private RulerShape _gripper;
 
 
         static WheelSlider()
@@ -90,6 +92,7 @@ namespace AvaDevBox.Controls
             //_pointerMovedDispose?.Dispose();
 
             _wheelArea = e.NameScope.Find<Control>("PART_WheelArea");
+            _gripper= e.NameScope.Find<RulerShape>("PART_Gripper");
 
             if (_wheelArea != null)
             {
@@ -121,6 +124,7 @@ namespace AvaDevBox.Controls
                 }
 
                 Value = newVal;
+                _gripper.PhaseShift += move;
                 _lastPoint = pt;
             }
         }
