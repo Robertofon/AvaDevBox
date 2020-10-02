@@ -1,0 +1,79 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:adb="https://flinkebits.de/avadevbox"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <adb:BusyIndicator Width="200" Height="100" IsActive="True"
+                         Background="Red"/>
+    </Border>
+  </Design.PreviewWith>
+  <Style Selector="adb|BusyIndicator">
+    <Style.Resources>
+      <RadialGradientBrush
+        x:Key="Tbr"
+        Center="3,3"
+        Radius="4"
+        >
+        <RadialGradientBrush.GradientStops>
+          <GradientStop Color="#000000" Offset="0.0"/>
+          <GradientStop Color="#333333" Offset="0.15"/>
+          <GradientStop Color="#555555" Offset="0.5"/>
+          <GradientStop Color="#999999" Offset="0.85"/>
+          <GradientStop Color="#FFFFFF" Offset="1.0"/>
+
+        </RadialGradientBrush.GradientStops>
+      </RadialGradientBrush>
+    </Style.Resources>
+
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderBrush" Value="{x:Null}"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="Height" Value="46"/>
+    <Setter Property="Width" Value="46"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border
+          Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="{TemplateBinding BorderThickness}">
+          <Viewbox Stretch="Uniform">
+            <DrawingPresenter  Stretch="Fill">
+              <DrawingPresenter.Drawing>
+                  <DrawingGroup>
+                    <!--<GeometryDrawing Brush="Coral">
+                      <GeometryDrawing.Geometry>
+                        <PathGeometry>
+                          <ArcSegment Point="5,66" Size="40,40" RotationAngle="144"/>
+
+                        </PathGeometry>
+                      </GeometryDrawing.Geometry>
+                    </GeometryDrawing>-->
+                    <GeometryDrawing Brush="Coral" Geometry="M44,12 C32,12 22,22 22,34 22,46 32,56 44,56 56,56 66,46 66,34 66,22 56,12 44,12z M44,0 C63,0 78,15 78,34 78,53 63,68 44,68 40,68 36.5,67.5 33,66 L32.5,66 14,90 0,79.5 18,55.5 17,55 C13,49 10,42 10,34 10,15 25,0 44,0z" />
+                    <GeometryDrawing Brush="Blue"
+                                   Geometry="F1 M9,136.4 L8,137.4 12,149.4 16,137.4 15,136.4 14,037.4 13,136.4 12,137.4 11,136.4 10,137.4 "/>                </DrawingGroup>
+              </DrawingPresenter.Drawing>
+            </DrawingPresenter>
+          </Viewbox>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+    <Style.Animations>
+      <!--<Animation Duration="0:0:0.7"  Delay="0:0:0.5" RepeatCount="infinite" PlaybackDirection="Alternate">
+        <KeyFrame Cue="0%">
+          <Setter Property="Opacity" Value="0.0"/>
+        </KeyFrame>
+        <KeyFrame Cue="20%">
+          <Setter Property="Opacity" Value="0.0"/>
+        </KeyFrame>
+        <KeyFrame Cue="90%">
+          <Setter Property="Opacity" Value="1.0"/>
+        </KeyFrame>
+        <KeyFrame Cue="100%">
+          <Setter Property="Opacity" Value="1.0"/>
+        </KeyFrame>
+      </Animation>-->
+    </Style.Animations>
+  </Style>
+</Styles>

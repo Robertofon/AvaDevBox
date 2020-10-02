@@ -15,6 +15,10 @@
       <demo:RangeSliderDemo/>
     </TabItem>
 
+    <TabItem Header="BusyIndicator" >
+      <demo:BusyIndicatorDemo/>
+    </TabItem>
+
     <TabItem Header="WheelSliders" >
       <demo:WheelSliderDemo/>
     </TabItem>
