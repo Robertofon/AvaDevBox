@@ -1,0 +1,64 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:adb="https://flinkebits.de/avadevbox"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <adb:RangeSlider Value="5" Minimum="3" Maximum="10" Value2="7" Background="DarkGray" Width="300"
+                     />
+    </Border>
+  </Design.PreviewWith>
+  <Style Selector="adb|RangeSlider">
+    <Setter Property="MinWidth" Value="40"/>
+    <Setter Property="MinHeight" Value="20"/>
+    <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+    <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
+    <Setter Property="Padding" Value="4"/>
+
+    <Setter Property="Template">
+      <ControlTemplate>
+        <!--<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+          
+        </Border>-->
+        <Grid Name="grid">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="20"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <adb:RulerShape Grid.Row="0" SmallTickDist="4" 
+                          Stroke="Black" TickFreq1="2" Height="10"
+                          Stretch="Fill" Width="100" PhaseShift="0"
+                          TickFreq2="4" Orientation="Horizontal" Fill="AliceBlue"
+                          />
+           
+          <Border Name="TrackBackground" Grid.Row="1" Height="4" Margin="6,0" VerticalAlignment="Center"/>
+          <Track Name="PART_Track" Grid.Row="1" Orientation="Horizontal">
+            <Track.DecreaseButton>
+              <RepeatButton Name="PART_DecreaseButton"
+                            Classes="repeattrack" />
+            </Track.DecreaseButton>
+            <Track.IncreaseButton>
+              <RepeatButton Name="PART_IncreaseButton"
+                            Classes="repeattrack" />
+            </Track.IncreaseButton>
+            <!--<Thumb Name="from" MinWidth="20" MinHeight="20"/>-->
+            <Thumb Name="thumb" MinWidth="20" MinHeight="20">
+              <Thumb.Template>
+                <ControlTemplate>
+                  <Grid>
+                    <Ellipse Width="12" Height="12" Fill="{DynamicResource ThemeAccentBrush}"/>
+                  </Grid>
+                </ControlTemplate>
+              </Thumb.Template>
+            </Thumb>
+          </Track>
+
+          <TextBlock Grid.Row="2" Text="kkk"/>
+        </Grid>
+
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

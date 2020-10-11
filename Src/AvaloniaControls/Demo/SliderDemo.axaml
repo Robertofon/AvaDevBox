@@ -36,5 +36,8 @@
              Placement="Top" Orientation="Horizontal"
              Ticks="2,3,4,5"
              ></TickBar>
+
+    <TextBlock>Two Handed range slider:</TextBlock>
+    <adb:RangeSlider Minimum="0" Maximum="200" Value="20" Value2="60"></adb:RangeSlider>
   </StackPanel>
 </UserControl>
