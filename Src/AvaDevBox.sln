@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaControls", "AvaloniaControls\AvaloniaControls.csproj", "{4FE84C8D-DD3A-4FA5-9173-66E1A06965E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaControlTest", "AvaloniaControlTest\AvaloniaControlTest.csproj", "{4FE84C8D-DD3A-4FA5-9173-66E1A06965E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaDevBox", "AvaDevBox\AvaDevBox.csproj", "{54845B12-0C77-404F-A12A-86BA1DBE6E22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaDevBox", "AvaDevBox\AvaDevBox.csproj", "{54845B12-0C77-404F-A12A-86BA1DBE6E22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaDevBox.Themes.Default", "AvaDevBox.Themes.Default\AvaDevBox.Themes.Default.csproj", "{BE5EFD65-2CC6-4498-847D-93C4EE459C5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaDevBox.Themes.Default", "AvaDevBox.Themes.Default\AvaDevBox.Themes.Default.csproj", "{BE5EFD65-2CC6-4498-847D-93C4EE459C5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

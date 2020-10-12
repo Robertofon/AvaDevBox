@@ -20,7 +20,11 @@ jobs:
     - name: Install dependencies
       run: dotnet restore Src/AvaDevBox.sln
     - name: Build
-      run: dotnet build --configuration Release --no-restore  Src/AvaDevBox.sln
+      run: |
+		dotnet build --configuration Release --no-restore  ./AvaDevBox/AvaDevBox.csproj
+		dotnet build --configuration Release --no-restore  ./AvaDevBox.Themes.Default/AvaDevBox.Themes.Default.csproj
+		dotnet build --configuration Release --no-restore  ./AvaloniaControlTest/AvaloniaControlTest.csproj
       working-directory: Src
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal Src/AvaDevBox.sln
+	  
+    # - name: Test
+      # run: dotnet test --no-restore --verbosity normal Src/AvaDevBox.sln
