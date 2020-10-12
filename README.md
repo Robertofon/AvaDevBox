@@ -1,6 +1,8 @@
 # AvaDevBox
 Controls for AvaloniaUI developers
 
+![.NET Core build AvaDevBox](https://github.com/flinkebits/AvaDevBox/workflows/.NET%20Core%20build%20AvaDevBox/badge.svg)
+
 This just emerging as a brilliant collection of lookless AvaloniaUI controls
 to be used in GUI applications. 
 
