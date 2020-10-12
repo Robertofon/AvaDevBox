@@ -28,6 +28,5 @@ jobs:
     - name: Build AvaloniaControlTest
       working-directory: Src
       run: dotnet build --configuration Release --no-restore  ./AvaloniaControlTest/AvaloniaControlTest.csproj
-	  
     # - name: Test
       # run: dotnet test --no-restore --verbosity normal Src/AvaDevBox.sln
