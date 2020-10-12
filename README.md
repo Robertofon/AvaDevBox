@@ -3,16 +3,17 @@ Controls for AvaloniaUI developers
 
 ![.NET Core build AvaDevBox](https://github.com/flinkebits/AvaDevBox/workflows/.NET%20Core%20build%20AvaDevBox/badge.svg)
 
-This just emerging as a brilliant collection of lookless AvaloniaUI controls
-to be used in GUI applications. 
+This is a currently emerging project. It shall and already does provide a brilliant collection of lookless [AvaloniaUI](http://avaloniaui.net/) controls.
+These can be used by GUI developers in GUI applications based on [AvaloniaUI](http://avaloniaui.net/). 
 
 ## License
-See [License.md].
+See [License.md](LICENSE).
 
 ## Design goals
 
 Goals are:
 * Having i18n in mind
+* Keyboard navigation
 * Easy and intuitive to use
 * Primary lookless design
 * Well made architecture
@@ -44,16 +45,41 @@ No releases yet. Planned.
 ### Detail:
 
 * MenuButton is a control that allows a popout with additional Controls. 
-![](img/MenuButton.png)
-![](img/LedButton.png)
-![](img/RatingControl.png)
-![](img/RulerShape.png)
-![](img/StarShape.png)
+  ![](img/MenuButton.png)
+
+* RatingControl allows to give a rating between 0.0 and 1.0 on a varying number of stars
+  or other shape (if templated differently)
+  ![](img/RatingControl.png)
+
+* StarShape is a waste product of RatingControl and may be used anywhere.
+  ![](img/StarShape.png)
+
+* LedButton and LedIndicator are visualized LEDs in configurable colors either as
+  shape or as checkbox control (including three-state) 
+  ![](img/LedButton.png)
+
+* RulerShape is a shape which allows a wide customization to show different styles of rulers
+  it supports three different tick legnths and can hence be configured from a straight row of dashes
+  to inch rulers with quarters and eithghts to centimeter rulers with 1.0, 0.5 and 0.1 dashes.
+  ![](img/RulerShape.png)
 
 * WheelSlider: This is a kind of slider. In fact it looks like a wheel inset into
   the surface. The user can just move the wheel and thus change the value.
   It supports wrap around and a speed up factor.
-![](img/WheelSlider.png)
+  ![](img/WheelSlider.png)
+
+* Future
+    * RangeSlider
+    * BusyIndicator
+    * TagInput  (aka Chips)
+    * SevenSegmentDisplay
+    * RotationSlider
+    * NotificationBar
+    * Gnatt diagram
+    * Flow chart area
+    * Flex layout tree
+    * Tree list control
+
 
 # We do even have some newer Panels included:
 
@@ -77,5 +103,5 @@ like
 
     ![](img/DockEnum.png)
 
-    Seealso: ![Roblog](https://log.koepferl.de/2020/09/20/mit-avaloniaui-enums-in-xaml-zeigen/)
+        Seealso: ![Roblog](https://log.koepferl.de/2020/09/20/mit-avaloniaui-enums-in-xaml-zeigen/)
 
