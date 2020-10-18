@@ -16,6 +16,13 @@
     <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}"/>
     <Setter Property="Padding" Value="4"/>
 
+    <Style.Resources>
+      <ControlTemplate x:Key="RangeThumb">
+        <Grid>
+          <Ellipse Width="12" Height="18" Fill="{DynamicResource ThemeAccentBrush}"/>
+        </Grid>
+      </ControlTemplate>
+    </Style.Resources>
     <Setter Property="Template">
       <ControlTemplate>
         <!--<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
@@ -27,33 +34,28 @@
             <RowDefinition Height="Auto" MinHeight="20"/>
             <RowDefinition Height="Auto"/>
           </Grid.RowDefinitions>
-          <adb:RulerShape Grid.Row="0" SmallTickDist="4" 
-                          Stroke="Black" TickFreq1="2" Height="10"
-                          Stretch="Fill" Width="100" PhaseShift="0"
-                          TickFreq2="4" Orientation="Horizontal" Fill="AliceBlue"
+          <adb:RulerShape Grid.Row="0" SmallTickDist="6" 
+                          Stroke="Black" TickFreq1="1" Height="18"
+                          Stretch="Fill"  PhaseShift="0"
+                          TickFreq2="1" Orientation="Horizontal" 
+                          ConnectionLine="TopOrLeft"
                           />
            
           <Border Name="TrackBackground" Grid.Row="1" Height="4" Margin="6,0" VerticalAlignment="Center"/>
-          <Track Name="PART_Track" Grid.Row="1" Orientation="Horizontal">
-            <Track.DecreaseButton>
+          <adb:RangeTrack Name="PART_Track" Grid.Row="1" Orientation="Horizontal">
+            <adb:RangeTrack.DecreaseButton>
               <RepeatButton Name="PART_DecreaseButton"
                             Classes="repeattrack" />
-            </Track.DecreaseButton>
-            <Track.IncreaseButton>
+            </adb:RangeTrack.DecreaseButton>
+            <adb:RangeTrack.IncreaseButton>
               <RepeatButton Name="PART_IncreaseButton"
                             Classes="repeattrack" />
-            </Track.IncreaseButton>
-            <!--<Thumb Name="from" MinWidth="20" MinHeight="20"/>-->
-            <Thumb Name="thumb" MinWidth="20" MinHeight="20">
-              <Thumb.Template>
-                <ControlTemplate>
-                  <Grid>
-                    <Ellipse Width="12" Height="12" Fill="{DynamicResource ThemeAccentBrush}"/>
-                  </Grid>
-                </ControlTemplate>
-              </Thumb.Template>
-            </Thumb>
-          </Track>
+            </adb:RangeTrack.IncreaseButton>
+            <adb:RangeTrack.Thumb2>
+              <Thumb Name="thumb2" MinWidth="20" MinHeight="20" Template="{StaticResource RangeThumb}"/>
+            </adb:RangeTrack.Thumb2>
+            <Thumb Name="thumb" MinWidth="20" MinHeight="20" Template="{StaticResource RangeThumb}"/>
+          </adb:RangeTrack>
 
           <TextBlock Grid.Row="2" Text="kkk"/>
         </Grid>

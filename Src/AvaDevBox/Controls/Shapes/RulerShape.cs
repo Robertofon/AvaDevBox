@@ -103,6 +103,7 @@ namespace AvaDevBox.Controls.Shapes
 
         static RulerShape()
         {
+            StrokeThicknessProperty.OverrideDefaultValue<RulerShape>(1);
             AffectsGeometry<RulerShape>(BoundsProperty, StrokeThicknessProperty, SmallTickDistProperty, 
                 TickFreq1Property, TickFreq2Property, ConnectionLineProperty, OrientationProperty, PhaseShiftProperty);
         }
