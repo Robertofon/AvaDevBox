@@ -6,5 +6,6 @@
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/LedButton.axaml"/>
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/MenuButton.axaml"/>
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/WheelSlider.axaml"/>
+  <StyleInclude Source="avares://AvaDevBox.Themes.Default/RangeSlider.axaml"/>
   <StyleInclude Source="avares://AvaDevBox.Themes.Default/BusyIndicator.axaml"/>
 </Styles>

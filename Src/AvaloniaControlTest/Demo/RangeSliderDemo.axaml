@@ -7,6 +7,7 @@
              x:Class="AvaloniaControlTest.Demo.RangeSliderDemo">
   <StackPanel>
     <TextBlock>Range Slider:</TextBlock>
-  
+
+    <adb:RangeSlider Minimum="0" Maximum="100" Width="300"/>
   </StackPanel>
 </UserControl>

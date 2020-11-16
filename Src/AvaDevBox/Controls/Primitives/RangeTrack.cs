@@ -44,7 +44,7 @@ namespace AvaDevBox.Controls.Primitives
 
         public RangeTrack()
         {
-            //base.UpdatePseudoClasses(Orientation);
+            this.UpdatePseudoClasses(Orientation);
         }
 
         public Thumb Thumb2
@@ -166,7 +166,7 @@ namespace AvaDevBox.Controls.Primitives
             else
             {
                 // Don't arrange if there's not enough content or the track is too small
-                if (!ComputeScrollBarLengths(arrangeSize, viewportSize, isVertical, out decreaseButtonLength, out thumb1Length, out increaseButtonLength))
+                if (!ComputeScrollBarLengths(arrangeSize, viewportSize, isVertical, out decreaseButtonLength, out thumb1Length, out selRangeLength, out thumb2Length, out increaseButtonLength))
                 {
                     return arrangeSize;
                 }
@@ -283,6 +283,101 @@ namespace AvaDevBox.Controls.Primitives
             }
 
             return arrangeSize;
+        }
+
+        private bool ComputeScrollBarLengths(Size arrangeSize, double viewportSize, bool isVertical, out double decreaseButtonLength, out double thumb1Length, out double selRangeLength, out double thumb2Length, out double increaseButtonLength)
+        {
+            var min = Minimum;
+            var range = Math.Max(0.0, Maximum - min);
+            var offset = Math.Min(range, Value - min);
+            var offset2 = Math.Min(range, Value2 - min);
+            var extent = Math.Max(0.0, range) + viewportSize;
+            var trackLength = isVertical ? arrangeSize.Height : arrangeSize.Width;
+            double thumbMinLength = 10;
+
+            StyledProperty<double> minLengthProperty = isVertical ? MinHeightProperty : MinWidthProperty;
+
+            var thumb = Thumb;
+
+            if (thumb != null && thumb.IsSet(minLengthProperty))
+            {
+                thumbMinLength = thumb.GetValue(minLengthProperty);
+            }
+
+            thumb1Length = trackLength * viewportSize / extent;
+            CoerceLength(ref thumb1Length, trackLength);
+            thumb1Length = Math.Max(thumbMinLength, thumb1Length);
+            // copy
+            thumb2Length = thumb1Length;
+
+            // If we don't have enough content to scroll, disable the track.
+            var notEnoughContentToScroll = MathUtilities.LessThanOrClose(range, 0.0);
+            var thumbLongerThanTrack = thumb1Length + thumb2Length > trackLength;
+
+            // if there's not enough content or the thumb is longer than the track, 
+            // hide the track and don't arrange the pieces
+            if (notEnoughContentToScroll || thumbLongerThanTrack)
+            {
+                ShowChildren(false);
+                ThumbCenterOffset = Double.NaN;
+                Density = Double.NaN;
+                decreaseButtonLength = 0.0;
+                increaseButtonLength = 0.0;
+                selRangeLength = 0.0;
+                return false; // don't arrange
+            }
+            else
+            {
+                ShowChildren(true);
+            }
+
+            // Compute lengths of increase and decrease button
+            double remainingTrackLength = trackLength - thumb1Length - thumb2Length;
+            decreaseButtonLength = remainingTrackLength * offset / range;
+            CoerceLength(ref decreaseButtonLength, remainingTrackLength);
+            selRangeLength = remainingTrackLength * (offset2 - offset) / range;
+            CoerceLength(ref selRangeLength, remainingTrackLength);
+            increaseButtonLength = remainingTrackLength - decreaseButtonLength - selRangeLength;
+            CoerceLength(ref increaseButtonLength, remainingTrackLength);
+            Density = range / remainingTrackLength;
+
+            return true;
+        }
+
+        private void ShowChildren(bool visible)
+        {
+            // WPF sets Visible = Hidden here but we don't have that, and setting IsVisible = false
+            // will cause us to stop being laid out. Instead show/hide the child controls.
+            if (Thumb != null)
+            {
+                Thumb.IsVisible = visible;
+            }
+
+            if (Thumb2 != null)
+            {
+                Thumb2.IsVisible = visible;
+            }
+
+            if (SelectRangeButton != null)
+            {
+                SelectRangeButton.IsVisible = visible;
+            }
+
+            if (IncreaseButton != null)
+            {
+                IncreaseButton.IsVisible = visible;
+            }
+
+            if (DecreaseButton != null)
+            {
+                DecreaseButton.IsVisible = visible;
+            }
+        }
+
+        private void UpdatePseudoClasses(Orientation o)
+        {
+            PseudoClasses.Set(":vertical", o == Orientation.Vertical);
+            PseudoClasses.Set(":horizontal", o == Orientation.Horizontal);
         }
 
 
