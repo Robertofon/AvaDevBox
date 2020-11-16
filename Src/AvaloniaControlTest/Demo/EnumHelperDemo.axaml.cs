@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace AvaloniaControlTest.Demo
 {
-    public class SliderDemo : UserControl
+    public class EnumHelperDemo : UserControl
     {
-        public SliderDemo()
+        public EnumHelperDemo()
         {
             this.InitializeComponent();
         }

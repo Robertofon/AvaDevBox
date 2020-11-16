@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:adb="https://flinkebits.de/avadevbox"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaControls.Demo.MenuButtonDemo">
+             x:Class="AvaloniaControlTest.Demo.MenuButtonDemo">
   <WrapPanel Orientation="Vertical">
     <TextBlock>The menu button Clickmode=Release:</TextBlock>
     <adb:MenuButton ClickMode="Release" Click="ClickEvent" Width="150">

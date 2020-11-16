@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace AvaloniaControls.Demo
+namespace AvaloniaControlTest.Demo
 {
     public class RangeSliderDemo : UserControl
     {

@@ -4,7 +4,7 @@ using Avalonia.Controls.Shapes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 
-namespace AvaloniaControls.Demo
+namespace AvaloniaControlTest.Demo
 {
     public class PanelDemo : UserControl
     {

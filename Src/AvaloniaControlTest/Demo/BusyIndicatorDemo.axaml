@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:adb="https://flinkebits.de/avadevbox"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaControls.Demo.BusyIndicatorDemo">
+             x:Class="AvaloniaControlTest.Demo.BusyIndicatorDemo">
   <StackPanel>
     <adb:BusyIndicator IsActive="{Binding #cb.IsChecked}"/>
     <CheckBox Name="cb" IsChecked="True" >IsActive</CheckBox>

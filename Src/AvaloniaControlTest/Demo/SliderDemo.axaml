@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:adb="https://flinkebits.de/avadevbox"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaControls.Demo.SliderDemo">
+             x:Class="AvaloniaControlTest.Demo.SliderDemo">
   <StackPanel>
     <TextBlock> Avalonia Slider:</TextBlock>
     <WrapPanel>

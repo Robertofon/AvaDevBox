@@ -7,7 +7,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
-namespace AvaloniaControls.Demo
+namespace AvaloniaControlTest.Demo
 {
     public class MenuButtonDemo : UserControl
     {

@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using Avalonia.Data.Converters;
 
-namespace AvaloniaControls.Demo
+namespace AvaloniaControlTest.Demo
 {
     public class Zero2NanConverter : IValueConverter
     {
